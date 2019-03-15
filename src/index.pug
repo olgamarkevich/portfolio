@@ -8,8 +8,213 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-    .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        section.main-top
+            header.header
+                .wrapper.flex
+                    .logo 
+                        a(href="").logo-link ОМ
+
+                    ul.nav-menu
+                        - var links_value = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                        - for (var i=0; i<=5; i++) {
+                            li.menu-item
+                                a(href="").menu-item-link= links_value[i]
+                        - }
+                    
+                    .social-network-list
+                        .social-network-item
+                            a(href="https://www.instagram.com/olga_pyrko" target="_blank").social-network-link.icon-bg-insta
+                        .social-network-item
+                            a(href="https://vk.com/olga_pyrko" target="_blank").social-network-link.icon-bg-vk 
+                        .social-network-item
+                            a(href="https://github.com/olgamarkevich" target="_blank").social-network-link.icon-bg-gh
+                                
+            .top-content
+                .wrapper
+                    .top-content-deck Личный сайт<br> веб разработчика
+                    .top-content-name Ольга<br> Маркевич
+                
+            .scroll-btn-wr
+                .scroll-btn Скролл
+                    +icon('scroll', 'link-class scroll-icon')
+                        
+            section.about
+                .wrapper
+                    .about-wr
+                        .about-info
+                            .about-img-wr
+                                +image('content/user.jpg', 'about-img')
+                            table.about-table
+                                tr
+                                    td Проживаю:
+                                    td Минск
+                                tr
+                                    td Возраст:
+                                    td 25 лет
+                                tr
+                                    td Родилась:
+                                    td 9 января 1994 г.
+                        .about-text
+                            p Привет, меня зовут
+                            h4 Ольга Маркевич
+                            p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
+                            .about-text-desc  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
+                 
+            section.skills
+                .wrapper.skills-img
+                    .skills-wr 
+                        .skills-info
+                            .pr-title Чем я могу быть полезен вам
+                            p.text-w Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                            .skills-list
+                                .skills-line
+                                    .skills-title Front-end
+                                    .skills-circle
+                                            - var skillValue = ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js'];
+                                            - for (var i=0; i<=3; i++) {
+                                            .circle-item
+                                                svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
+                                                    circle.circle.circle_under(cx="78" cy="78" r="68")
+                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -10s")
+                                                .skill-title= skillValue[i]
+                                            - }
+                                    
+                                .skills-line
+                                    .skills-title Workflow
+                                    .skills-circle
+                                            - var skillValue = ['GIT', 'Terminal', 'Gulp', 'Webpack'];
+                                            - for (var i=0; i<=3; i++) {
+                                            .circle-item
+                                                svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
+                                                    circle.circle.circle_under(cx="78" cy="78" r="68")
+                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -10s")
+                                                .skill-title= skillValue[i]
+                                            - }
+            
+            section.portfolio
+                .wrapper
+                    .pr-title Мои работы
+                    .portfolio-wr
+                        .portfolio-slider
+                            .portfolio-preview
+                                +image('content/portfolio/01.png', 'about-img')
+                            .portfolio-min
+                                .portfolio-min-item
+                                    +image('content/portfolio/04.png', 'portfolio-img')
+                                .portfolio-min-item
+                                    +image('content/portfolio/03.png', 'portfolio-img')
+                                .portfolio-min-item
+                                    +image('content/portfolio/02.png', 'portfolio-img')
+                                .portfolio-min-item.active
+                                    +image('content/portfolio/01.png', 'portfolio-img')
+                            .portfolio-btn
+                                .portfolio-btn-up.no-active
+                                .portfolio-btn-down
+                                
+                        .portfolio-info
+                            .portfolio-tags
+                                span.portfolio-tags-item HTML
+                                span.portfolio-tags-item CSS
+                                span.portfolio-tags-item Javascript
+                            .portfolio-name Сайт школы образования
+                            .portfolio-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                            a.portfolio-link(href="#") Посмотреть сайт
+                            
+            .bottom-bg                             
+                section.reviews
+                    .wrapper
+                        .flex
+                            .pr-title Что обо мне говорят
+                            .reviews-slider-btns
+                                .reviews-slider-btn.prev-btn
+                                .reviews-slider-btn.next-btn
+                        .reviews-slider
+                            .reviews-item
+                                .reviews-text
+                                    p Этот парень проходил обучение <br>веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                                .reviews-name-wr
+                                    .reviews-img
+                                        +image('content/reviews-person/01.jpg', 'about-img')
+                                    .reviews-person
+                                        .reviews-name Ковальчук Дмитрий
+                                        .reviews-position Основатель Loftschool
+                            .reviews-item
+                                .reviews-text
+                                    p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                                .reviews-name-wr
+                                    .reviews-img
+                                        +image('content/reviews-person/02.jpg', 'about-img')
+                                    .reviews-person
+                                        .reviews-name Владимир Сабанцев
+                                        .reviews-position Преподаватель
+
+                section.feedback
+                    .wrapper
+                        .pr-title Связаться со мной
+                        form.wi-form
+                            .flex-row
+                                .flex-col
+                                    .wi-line
+                                        label.form-label Введите ваше имя
+                                        .line-wr
+                                            +icon('user', 'line-icon')
+                                            input.form-input
+                                            .line-placeholder Ковальчук Дмитрий
+                                .flex-col
+                                    .wi-line
+                                        label.form-label Введите ваш email
+                                        .line-wr
+                                            +icon('envelope', 'line-icon')
+                                            input.form-input
+                                            .line-placeholder loftschool@study.com
+                            .wi-line
+                                    .wi-line
+                                            label.form-label Сообщение к письму
+                                            .line-wr
+                                                +icon('message', 'line-icon')
+                                                textarea.form-textarea
+                                                .line-placeholder Требуется ваша помощь в создании сайта. <br>Интересуют сроки и цена вопроса
+                            button.wi-btn Отправить
+                       
+                        
+                    
+            footer.footer
+                .wrapper.flex-wr
+                    .footer-left
+                        .footer-copi © 2019
+                        .footer-user 
+                            .footer-user-name Ольга<br> Маркевич
+                            .footer-user-desk Личный сайт<br> веб-разработчика
+                    .footer-right
+                        .footer-nav
+                            - var links_value = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                            - for (var i=0; i<=5; i++) {
+                            .footer-nav-item
+                                a.footer-link(href="")= links_value[i]
+                            - }  
+
+                        .footer-info-wr
+                            .footer-col
+                                .p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                                .social-network-list
+                                    .social-network-item
+                                        a(href="https://www.instagram.com/olga_pyrko" target="_blank").social-network-link
+                                            +icon('github', 'footer-icon')
+                                    .social-network-item
+                                        a(href="https://vk.com/olga_pyrko" target="_blank").social-network-link
+                                            +icon('vk', 'footer-icon')
+                                    .social-network-item
+                                        a(href="https://github.com/olgamarkevich" target="_blank").social-network-link
+                                            +icon('insta', 'footer-icon')
+                            .footer-col
+                                p.footer-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                                p.footer-aut Martin Golding
+              
+        svg
+            defs
+                lineargradient#dm-gradient
+                    stop(offset='0%', stop-color='#5500f2')
+                    stop(offset='50%', stop-color='#5500f2')
+                    stop(offset='100%', stop-color='#9100ed')
+                                        
+                            
