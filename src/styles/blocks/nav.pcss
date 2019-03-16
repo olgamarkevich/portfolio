@@ -1,0 +1,35 @@
+nav{
+    .nav__list{
+        display: flex;
+    
+        .nav__item{
+            padding: 0 30px;
+    
+            &:last-child {
+                padding-right: 0
+            }
+    
+            &:first-child {
+                padding-left: 0
+            }
+            .nav__link{
+                font-size: 16px;
+                text-decoration: none;
+                color: #414c63;
+                transition: all 0.3s;
+    
+                &:hover {
+                color: $text-color-hover
+                }
+            }
+        }
+        
+    }
+    &.nav--color-white{
+        .nav__item{
+            .nav__link{
+                color:#fff;
+            }
+        }
+    }
+}

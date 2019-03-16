@@ -8,74 +8,90 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-        section.main-top
-            header.header
-                .wrapper.flex
-                    .logo 
-                        a(href="").logo-link ОМ
+    .wrapper
+        .maincontent
+            .welcome-section.main-top
+                .section.hero
+                    .container.hero__container
+                        header.header
+                            .logo ОМ
+                            .header__menu
+                                nav.nav
+                                    ul.nav__list
+                                        - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                                        each item in menu
+                                            li.nav__item
+                                                a(href="").nav__link #{item}
+                            ul.socials
+                                    - var socials = ['insta', 'vk', 'github'];
+                                    each item in socials
+                                        li.socials__item
+                                            a(href="").socials__link
+                                                +icon(`${item}`, 'socials__icon')
 
-                    ul.nav-menu
-                        - var links_value = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                        - for (var i=0; i<=5; i++) {
-                            li.menu-item
-                                a(href="").menu-item-link= links_value[i]
-                        - }
+                        .top__content
+                            .user-info
+                                .user-info__desk Личный сайт<br> веб разработчика
+                                .user-info__name Ольга<br> Маркевичd
                     
-                    .social-network-list
-                        .social-network-item
-                            a(href="https://www.instagram.com/olga_pyrko" target="_blank").social-network-link.icon-bg-insta
-                        .social-network-item
-                            a(href="https://vk.com/olga_pyrko" target="_blank").social-network-link.icon-bg-vk 
-                        .social-network-item
-                            a(href="https://github.com/olgamarkevich" target="_blank").social-network-link.icon-bg-gh
-                                
-            .top-content
-                .wrapper
-                    .top-content-deck Личный сайт<br> веб разработчика
-                    .top-content-name Ольга<br> Маркевич
+                        .scroll-btn-wr
+                            .scroll-btn Скролл
+                                +icon('scroll', 'link-class scroll-icon')
                 
-            .scroll-btn-wr
-                .scroll-btn Скролл
-                    +icon('scroll', 'link-class scroll-icon')
-                        
-            section.about
-                .wrapper
-                    .about-wr
-                        .about-info
-                            .about-img-wr
-                                +image('content/user.jpg', 'about-img')
-                            table.about-table
-                                tr
-                                    td Проживаю:
-                                    td Минск
-                                tr
-                                    td Возраст:
-                                    td 25 лет
-                                tr
-                                    td Родилась:
-                                    td 9 января 1994 г.
-                        .about-text
-                            p Привет, меня зовут
-                            h4 Ольга Маркевич
-                            p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
-                            .about-text-desc  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
+                section.about
+                    .container
+                        .about-container
+                            .about__left
+                                .user-date
+                                    .about-img-wr
+                                        +image('content/user.jpg', 'about-img')
+                                    
+                                    table.user__data-table
+                                        - 
+                                            var data = [
+                                                ['Проживаю:', 'Минск'],
+                                                ['Возраст:', '25 лет'],
+                                                ['Родилась:', '9 января 1994 г.'],
+                                            ]
+                                        each row in data
+                                            tr.user__data-row
+                                                td.user__data-cell #{row[0]}
+                                                td.user__data-cell #{row[1]}
+                            .about__right
+                                .about__welcome Привет, меня зовут
+                                .about__name Ольга Маркевич
+                                .about__desc 
+                                    p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
+                                .about__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
                  
+
+                .triangles
+                    svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                        polygon(
+                            points="0,0 0,100 1000,100"
+                        )
+                    svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                        polygon(
+                        points="0,100 1000,100 1000,0"
+                    )
+
+
             section.skills
-                .wrapper.skills-img
-                    .skills-wr 
+                .container
+                    .skills-container.skills-img
                         .skills-info
-                            .pr-title Чем я могу быть полезен вам
+                            .section-title Чем я могу быть полезен вам
                             p.text-w Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-                            .skills-list
+                            .users-skills
                                 .skills-line
                                     .skills-title Front-end
                                     .skills-circle
                                             - var skillValue = ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js'];
                                             - for (var i=0; i<=3; i++) {
-                                            .circle-item
+                                            .circle__item
                                                 svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
                                                     circle.circle.circle_under(cx="78" cy="78" r="68")
-                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -10s")
+                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -50s")
                                                 .skill-title= skillValue[i]
                                             - }
                                     
@@ -84,73 +100,88 @@ html(lang="en")
                                     .skills-circle
                                             - var skillValue = ['GIT', 'Terminal', 'Gulp', 'Webpack'];
                                             - for (var i=0; i<=3; i++) {
-                                            .circle-item
+                                            .circle__item
                                                 svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
                                                     circle.circle.circle_under(cx="78" cy="78" r="68")
-                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -10s")
+                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -80s")
                                                 .skill-title= skillValue[i]
                                             - }
             
             section.portfolio
-                .wrapper
-                    .pr-title Мои работы
-                    .portfolio-wr
+                .container
+                    .section-title Мои работы
+                    .portfolio-container
                         .portfolio-slider
                             .portfolio-preview
                                 +image('content/portfolio/01.png', 'about-img')
-                            .portfolio-min
-                                .portfolio-min-item
+                            .portfolio-nav
+                                .portfolio-nav__item
                                     +image('content/portfolio/04.png', 'portfolio-img')
-                                .portfolio-min-item
+                                .portfolio-nav__item
                                     +image('content/portfolio/03.png', 'portfolio-img')
-                                .portfolio-min-item
+                                .portfolio-nav__item
                                     +image('content/portfolio/02.png', 'portfolio-img')
-                                .portfolio-min-item.active
+                                .portfolio-nav__item.active
                                     +image('content/portfolio/01.png', 'portfolio-img')
-                            .portfolio-btn
-                                .portfolio-btn-up.no-active
-                                .portfolio-btn-down
+                            .portfolio-dots
+                                .btn-up.no-active
+                                .btn-down
                                 
-                        .portfolio-info
+                        .portfolio-date
+                            .portfolio-date_number 4
                             .portfolio-tags
-                                span.portfolio-tags-item HTML
-                                span.portfolio-tags-item CSS
-                                span.portfolio-tags-item Javascript
+                                span.portfolio-tags__item HTML
+                                span.portfolio-tags__item CSS
+                                span.portfolio-tags__item Javascript
                             .portfolio-name Сайт школы образования
                             .portfolio-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                             a.portfolio-link(href="#") Посмотреть сайт
+                    
+                    
                             
-            .bottom-bg                             
+            .bottom-section
+                .triangles
+                    svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                        polygon(
+                            points="0,0 1000,0 1000,100"
+                        )
+                    svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                        polygon(
+                        points="0,100 0,0 1000,0"
+                    )
+
                 section.reviews
-                    .wrapper
-                        .flex
-                            .pr-title Что обо мне говорят
-                            .reviews-slider-btns
-                                .reviews-slider-btn.prev-btn
-                                .reviews-slider-btn.next-btn
-                        .reviews-slider
-                            .reviews-item
-                                .reviews-text
-                                    p Этот парень проходил обучение <br>веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                    .container
+                        .flex-reviews
+                            .section-title Что обо мне говорят
+                            .reviews__slider-controls
+                                .prev-btn
+                                .next-btn
+                        .reviews__slider
+                            .reviews__item
+                                .reviews__text
+                                    p Этот парень проходил обучение <br>веб-разработке не где-то, а в LoftSchool! 3,5 месяца только самых тяжелых испытаний и бессонных ночей!
                                 .reviews-name-wr
-                                    .reviews-img
-                                        +image('content/reviews-person/01.jpg', 'about-img')
-                                    .reviews-person
-                                        .reviews-name Ковальчук Дмитрий
-                                        .reviews-position Основатель Loftschool
-                            .reviews-item
-                                .reviews-text
+                                    .reviews__avatar
+                                        +image('content/reviews-person/01.jpg', 'avatar-img')
+                                    .reviews__person
+                                        .reviews__name Ковальчук Дмитрий
+                                        .reviews__position Основатель Loftschool
+                            .reviews__item
+                                .reviews__text
                                     p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
                                 .reviews-name-wr
-                                    .reviews-img
-                                        +image('content/reviews-person/02.jpg', 'about-img')
-                                    .reviews-person
-                                        .reviews-name Владимир Сабанцев
-                                        .reviews-position Преподаватель
+                                    .reviews__avatar
+                                        +image('content/reviews-person/02.jpg', 'avatar-img')
+                                    .reviews__person
+                                        .reviews__name Владимир Сабанцев
+                                        .reviews__position Преподаватель
+
+                                
 
                 section.feedback
-                    .wrapper
-                        .pr-title Связаться со мной
+                    .container
+                        .section-title Связаться со мной
                         form.wi-form
                             .flex-row
                                 .flex-col
@@ -175,46 +206,47 @@ html(lang="en")
                                                 textarea.form-textarea
                                                 .line-placeholder Требуется ваша помощь в создании сайта. <br>Интересуют сроки и цена вопроса
                             button.wi-btn Отправить
-                       
                         
-                    
+                        
+                        
+                       
             footer.footer
-                .wrapper.flex-wr
-                    .footer-left
+                .container.flex-wr
+                    .footer__left
                         .footer-copi © 2019
                         .footer-user 
-                            .footer-user-name Ольга<br> Маркевич
+                            .footer-user-name Ольга<br> Маркевичf
                             .footer-user-desk Личный сайт<br> веб-разработчика
-                    .footer-right
-                        .footer-nav
-                            - var links_value = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                            - for (var i=0; i<=5; i++) {
-                            .footer-nav-item
-                                a.footer-link(href="")= links_value[i]
-                            - }  
+                    .footer__right
+                        nav.nav.nav--color-white
+                            ul.nav__list
+                                - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                                    each item in menu
+                                        li.nav__item
+                                            a(href="").nav__link #{item}
 
                         .footer-info-wr
                             .footer-col
-                                .p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                                .social-network-list
-                                    .social-network-item
-                                        a(href="https://www.instagram.com/olga_pyrko" target="_blank").social-network-link
-                                            +icon('github', 'footer-icon')
-                                    .social-network-item
-                                        a(href="https://vk.com/olga_pyrko" target="_blank").social-network-link
-                                            +icon('vk', 'footer-icon')
-                                    .social-network-item
-                                        a(href="https://github.com/olgamarkevich" target="_blank").social-network-link
-                                            +icon('insta', 'footer-icon')
+                                article.footer-text 
+                                    .p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                                ul.socials.socials-border
+                                    - var socials = ['insta', 'vk', 'github'];
+                                    each item in socials
+                                        li.socials__item
+                                            a(href="").socials__link
+                                                +icon(`${item}`, 'socials__icon')
+
+
                             .footer-col
-                                p.footer-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                                p.footer-aut Martin Golding
+                                article.footer-text
+                                    p.footer-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                                    p.footer-aut Martin Golding
               
-        svg
-            defs
-                lineargradient#dm-gradient
-                    stop(offset='0%', stop-color='#5500f2')
-                    stop(offset='50%', stop-color='#5500f2')
-                    stop(offset='100%', stop-color='#9100ed')
+    svg
+        defs
+            lineargradient#dm-gradient
+                stop(offset='0%', stop-color='#5500f2')
+                stop(offset='50%', stop-color='#5500f2')
+                stop(offset='100%', stop-color='#9100ed')
                                         
                             

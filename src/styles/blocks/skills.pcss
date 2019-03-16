@@ -1,0 +1,128 @@
+
+.skills {
+    padding: 153px 0 70px 0;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin-bottom: 50px;
+}
+
+
+
+.skills-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .skills-img-wr {
+        width: 504px;
+
+    }
+
+    .skills-info {
+        width: 66%;
+
+        .section-title {
+            font-size: 30px;
+        }
+
+        p {
+            max-width: 600px;
+        }
+    }
+
+    .skills-img {
+        position: relative;
+        width: 712px;
+        height: 627px;
+    }
+}
+
+.skills-img{
+    position: relative;
+}
+
+.skills-img:after {
+    content: "";
+    position: absolute;
+    background-image: url(../images/content/skills.png);
+    width: 712px;
+    height: 627px;
+    left: -9%;
+    top: 15%;
+    background-position: center;
+}
+
+.users-skills {
+    padding: 85px 0 0 125px;
+
+    .skills-title {
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 35px;
+    }
+
+    .skills-line {
+        margin-bottom: 35px;
+    }
+}
+
+.percentagel {
+    display: inline-block;
+    width: 156px;
+    height: 156px;
+    transform: rotate(-180deg);
+
+    .circle {
+        fill: transparent;
+        stroke-width: 9px;
+        stroke: #eaeaea;
+    }
+
+    .circle_above {
+        stroke: url(#dm-gradient);
+        stroke-dasharray: 427;
+        stroke-dashoffset: 427;
+        animation: fill 100s linear infinite;
+        animation-play-state: paused;
+        stroke-width: 20px;
+    }
+
+    @keyframes fill {
+        from {
+            stroke-dashoffset: 427;
+        }
+
+        from {
+            stroke-dashoffset: 0;
+        }
+    }
+}
+
+.skills-circle {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.circle__item {
+    position: relative;
+    width: 156px;
+    height: 156px;
+    margin-right: 46px;
+    .skill-title {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        opacity: 0.5;
+        font-size: 18px;
+        padding: 0 16px;
+        text-align: center;
+    }
+}
