@@ -46,6 +46,10 @@
     background: none;
     position: relative;
     z-index: 2;
+    &::-webkit-input-placeholder {color:$text-color;}
+    &::-moz-placeholder          {color:$text-color;}/* Firefox 19+ */
+    &:-moz-placeholder           {color:$text-color;;}/* Firefox 18- */
+    &:-ms-input-placeholder      {color:$text-color;;}
 }
 
 .line-wr{
@@ -56,21 +60,8 @@
         fill:#cecece;
         position:absolute;
     }
-    .line-placeholder{
-        position: absolute;
-        font-weight: 700;
-        top:-5px;
-        left: 46px;
-        font-size: 18px;
-        line-height: 2em;
-        z-index: 1;
-        }
-}
 
-.form-input:focus + .line-placeholder,
-.form-textarea:focus +  .line-placeholder{
-    display: none;
-    }
+}
 
 .form-textarea {
     resize: none;
