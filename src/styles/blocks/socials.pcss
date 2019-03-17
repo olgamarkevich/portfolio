@@ -23,12 +23,17 @@
   }
   &.socials-border{
     .socials__link{
-      border: 1px solid #ccc;
+      border: 1px solid #fff;
+      opacity: 0.5;
+      transition: all 0.3s;
       .socials__icon{
-        fill:#ccc;
+        fill:#fff;
         width: 22px;
         height: 22px;
       }
+    &:hover{
+      opacity: 1;
+    }
     }
     .socials__item {
       margin-right: 19px;
