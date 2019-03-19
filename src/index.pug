@@ -39,30 +39,29 @@ html(lang="en")
                                 +icon('scroll', 'link-class scroll-icon')
                 
                 section.about
-                    .container
-                        .about-container
-                            .about__left
-                                .user-date
-                                    .about-img-wr
-                                        +image('content/user.jpg', 'about-img')
+                    .container.about-container
+                        .about__left
+                            .user-date
+                                .about-img-wr
+                                    +image('content/user.jpg', 'about-img', alt="user")
                                     
-                                    table.user__data-table
-                                        - 
-                                            var data = [
-                                                ['Проживаю:', 'Минск'],
-                                                ['Возраст:', '25 лет'],
-                                                ['Родилась:', '9 января 1994 г.'],
-                                            ]
-                                        each row in data
-                                            tr.user__data-row
-                                                td.user__data-cell #{row[0]}
-                                                td.user__data-cell #{row[1]}
-                            .about__right
-                                .about__welcome Привет, меня зовут
-                                .about__name Ольга Маркевич
-                                .about__desc 
-                                    p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
-                                .about__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
+                                table.user__data-table
+                                    - 
+                                        var data = [
+                                            ['Проживаю:', 'Минск'],
+                                            ['Возраст:', '25 лет'],
+                                            ['Родилась:', '9 января 1994 г.'],
+                                        ]
+                                    each row in data
+                                        tr.user__data-row
+                                            td.user__data-cell #{row[0]}
+                                            td.user__data-cell #{row[1]}
+                        .about__right
+                            .about__welcome Привет, меня зовут
+                            .about__name Ольга Маркевич
+                            .about__desc 
+                                p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
+                            .about__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
                  
 
                 .triangles
@@ -113,16 +112,16 @@ html(lang="en")
                     .portfolio-container
                         .portfolio-slider
                             .portfolio-preview
-                                +image('content/portfolio/01.png', 'about-img')
+                                +image('content/portfolio/01.png', 'about-img', alt="portfolio_01")
                             .portfolio-nav
                                 .portfolio-nav__item
-                                    +image('content/portfolio/04.png', 'portfolio-img')
+                                    +image('content/portfolio/04.png', 'portfolio-img', alt="portfolio_04")
                                 .portfolio-nav__item
-                                    +image('content/portfolio/03.png', 'portfolio-img')
+                                    +image('content/portfolio/03.png', 'portfolio-img', alt="portfolio_03")
                                 .portfolio-nav__item
-                                    +image('content/portfolio/02.png', 'portfolio-img')
+                                    +image('content/portfolio/02.png', 'portfolio-img', alt="portfolio_02")
                                 .portfolio-nav__item.active
-                                    +image('content/portfolio/01.png', 'portfolio-img')
+                                    +image('content/portfolio/01.png', 'portfolio-img', alt="portfolio_01")
                             .portfolio-dots
                                 .btn-up.no-active
                                 .btn-down
@@ -163,7 +162,7 @@ html(lang="en")
                                     p Этот парень проходил обучение <br>веб-разработке не где-то, а в LoftSchool! 3,5 месяца только самых тяжелых испытаний и бессонных ночей!
                                 .reviews-name-wr
                                     .reviews__avatar
-                                        +image('content/reviews-person/01.jpg', 'avatar-img')
+                                        +image('content/reviews-person/01.jpg', 'avatar-img', alt="reviews-person_01")
                                     .reviews__person
                                         .reviews__name Ковальчук Дмитрий
                                         .reviews__position Основатель Loftschool
@@ -172,7 +171,7 @@ html(lang="en")
                                     p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
                                 .reviews-name-wr
                                     .reviews__avatar
-                                        +image('content/reviews-person/02.jpg', 'avatar-img')
+                                        +image('content/reviews-person/02.jpg', 'avatar-img', alt="reviews-person_02")
                                     .reviews__person
                                         .reviews__name Владимир Сабанцев
                                         .reviews__position Преподаватель
