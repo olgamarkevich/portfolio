@@ -32,4 +32,34 @@ nav{
             }
         }
     }
+
+    @media (max-width: 991px){
+        .nav__list .nav__item{
+            margin-right: 40px;
+        }
+    }
+
+    @media (max-width: 768px){
+        
+        .nav__list{
+           flex-wrap: wrap;
+           .nav__item{
+               width: 25%;
+               margin-bottom: 20px;
+               margin-right: 5px;
+           }
+        }
+        
+    }
+
+    @media (max-width: 560px){
+        .nav__list{
+           flex-wrap: wrap;
+           .nav__item{
+               width: 50%;
+               margin-right: 0;
+           }
+        }
+    }
+    
 }

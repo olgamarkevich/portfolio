@@ -1,4 +1,5 @@
 .feedback {
+    position: relative;
     .section-title {
         margin-bottom: 80px;
     }
@@ -93,4 +94,55 @@ margin-right: 48px;
     .form-textarea {
         width: 100%;
     }
+}
+
+@media (max-width: 1200px){
+    .feedback .section-title{
+        margin-bottom: 87px;
+        }
+}
+
+@media (max-width: 991px){
+    .feedback .section-title{
+       text-align: center;
+        }
+}
+
+@media (max-width: 768px){
+    .feedback{
+        text-align: center;
+        .form-label{
+            text-align: left;
+        }
+        .section-title{
+            margin-bottom: 55px;
+        }
+        .wi-form>.wi-line {
+            margin-bottom: 27px;
+        }
+        .wi-btn{
+            padding: 29px 127px;
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: 560px){
+    .flex-row {
+        flex-wrap: wrap;
+        .flex-col{
+            width: 100%;margin-right: 0;
+        }
+    }
+    .feedback{
+        .wi-btn{
+            width: 100%;
+            height: 75px;
+            padding: 0%
+        }
+        .form-textarea{
+            height: 100px;
+        }
+    }
+    
 }

@@ -2,6 +2,7 @@
     padding: 86px 0;
     background-color: #1f232d;
     color: #fff;
+    position: relative;
 
     .footer-copi {
         font-size: 48px;
@@ -63,5 +64,70 @@
     .footer-aut {
         font-style: italic;
     }
-   
+
+    @media (max-width: 1200px){
+            padding: 68px 0;
+        .footer__left{
+            width: 24%;
+            flex-wrap: wrap;
+        }
+        .footer-user{
+            padding:0;
+        }
+        .footer__right{
+            width: 76%;
+        }
+    
+    }
+
+    @media (max-width: 768px){
+        .footer-copi{
+            line-height: 1.2em;
+        }
+        .footer-col{
+            width: 100%;
+        }
+        .footer-col:nth-child(2){
+            padding-left: 0;
+        }
+        .footer-copi{
+            margin-right: 0;
+        }
+        .footer__left{
+            width: 33%;
+        }
+        .footer__right{
+            width: 67%;
+        }
+        .nav{
+            margin-bottom: 36px;
+        }
+        .socials {
+            margin-bottom: 57px;
+        }
+    }
+
+    @media (max-width: 560px){
+        .footer__left,
+        .footer__right{
+            width: 100%;
+        }
+        .footer-copi{
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        .footer-user{
+            margin-bottom: 30px;
+        }
+        .footer-user-name br{
+            display: none;
+        }
+        .footer-user-desk br{
+            display: none;
+        }
+
+        
+    }
+
 }

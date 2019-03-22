@@ -1,0 +1,21 @@
+.mobile-menu{
+  display: none;
+  
+}
+
+.mobile-menu_line{
+  width: 25px;
+  height: 4px;
+  background-color: $text-color;
+  margin-bottom: 4px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+
+@media (max-width: 900px){
+  .mobile-menu{
+      display: block;
+  }
+}

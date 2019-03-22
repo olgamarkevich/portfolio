@@ -27,6 +27,7 @@
 .about {
     margin-bottom: 255px;
     padding-top: 256px;
+    position: relative
 }
 
 .about-container {
@@ -48,7 +49,6 @@
             margin-bottom: 27px;
         }
     }
-
 
     .about__ps {
         font-style: italic;
@@ -76,9 +76,42 @@
         }
     }
 }
-
-
 .flex-wr {
     display: flex;
     flex-wrap: wrap;
+}
+
+@media (max-width: 1200px){
+    .about{
+        padding-top: 16%;
+    }
+}
+
+
+@media (max-width: 768px){
+    .about{
+        margin-bottom: 150px;
+        .about__desc{
+            margin-bottom: 60px;
+        }
+    }
+}
+
+@media (max-width: 560px){
+    .about-container {
+        flex-wrap: wrap;
+        .about__left,
+        .about__right {
+            width: 100%;
+            margin-left: 0;
+            max-width: 100%;
+        }
+    }
+    .about-img-wr{
+        margin-bottom: 30px;
+    }
+
+    .user-date{
+        margin-bottom: 30px;
+    }
 }

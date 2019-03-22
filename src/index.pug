@@ -8,10 +8,29 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
+
+    
+            
     .wrapper
         .maincontent
-            .welcome-section.main-top
-                .section.hero
+            .welcome-section
+                .section.parallax
+                    .parallax__layer(data-speed="0.2")
+                        +image('content/parallax/parallax_1.png', 'parallax__image', alt="parallax_1")
+                    .parallax__layer(data-speed="0.15")
+                        +image('content/parallax/parallax_2.png', 'parallax__image', alt="parallax_2")
+                    .parallax__layer(data-speed="0.6")
+                        +image('content/parallax/parallax_3.png', 'parallax__image', alt="parallax_3")
+                    .parallax__layer(data-speed="0.4")
+                        +image('content/parallax/parallax_7.png', 'parallax__image', alt="parallax_4")
+                    .parallax__layer(data-speed="0.25")
+                        +image('content/parallax/parallax_5.png', 'parallax__image', alt="parallax_5")
+                    .parallax__layer(data-speed="0.2")
+                        +image('content/parallax/parallax_6.png', 'parallax__image', alt="parallax_6")
+                    .parallax__layer(data-speed="0.1")
+                        +image('content/parallax/parallax_4.png', 'parallax__image', alt="parallax_7")
+
+                .section.hero 
                     .container.hero__container
                         header.header
                             .logo ОМ
@@ -28,6 +47,11 @@ html(lang="en")
                                         li.socials__item
                                             a(href="").socials__link
                                                 +icon(`${item}`, 'socials__icon')
+
+                            .mobile-menu
+                                .mobile-menu_line
+                                .mobile-menu_line
+                                .mobile-menu_line
 
                         .top__content
                             .user-info
@@ -77,9 +101,10 @@ html(lang="en")
 
             section.skills
                 .container
-                    .skills-container.skills-img
+                    .skills-container
+                        .skills-img-container
                         .skills-info
-                            .section-title Чем я могу быть полезен вам
+                            .section-title Чем я могу для вас полезной
                             p.text-w Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                             .users-skills
                                 .skills-line
@@ -111,6 +136,7 @@ html(lang="en")
                     .section-title Мои работы
                     .portfolio-container
                         .portfolio-slider
+                            .portfolio-date_number 4
                             .portfolio-preview
                                 +image('content/portfolio/01.png', 'about-img', alt="portfolio_01")
                             .portfolio-nav
@@ -127,7 +153,6 @@ html(lang="en")
                                 .btn-down
                                 
                         .portfolio-date
-                            .portfolio-date_number 4
                             .portfolio-tags
                                 span.portfolio-tags__item HTML
                                 span.portfolio-tags__item CSS
@@ -148,6 +173,20 @@ html(lang="en")
                         polygon(
                         points="0,100 0,0 1000,0"
                     )
+
+                .parallax-bottom
+                    .parallax__layer2(data-speed="0")
+                        +image('content/parallax/parallax_2-1.png', 'parallax__image', alt="parallax_1")
+                    .parallax__layer2(data-speed="0.1")
+                        +image('content/parallax/parallax_2-2.png', 'parallax__image', alt="parallax_2")
+                    .parallax__layer2(data-speed="0.4")
+                        +image('content/parallax/parallax_2-3.png', 'parallax__image', alt="parallax_3")
+                    .parallax__layer2(data-speed="0.3")
+                        +image('content/parallax/parallax_2-5.png', 'parallax__image', alt="parallax_5")
+                    .parallax__layer2(data-speed="0.2")
+                        +image('content/parallax/parallax_2-4.png', 'parallax__image', alt="parallax_4")
+                    .parallax__layer2(data-speed="0.1")
+                        +image('content/parallax/parallax_2-6.png', 'parallax__image', alt="parallax_6")
 
                 section.reviews
                     .container

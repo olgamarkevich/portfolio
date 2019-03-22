@@ -40,7 +40,6 @@ $text-color-hover: #5500f2;
     margin: 0 auto;
     max-width: 1480px;
     width: 95%;
-    // width: 1490px;
 
     @include phones {
         width: 85%;
@@ -184,8 +183,6 @@ img {
     }
 }
 .bottom-section{
-    background: url('../images/content/bottom-bg.png') center no-repeat;
-    min-height: 1460px;
     padding: 260px 0 60px 0;
     position: relative;
     background-size: cover;
@@ -193,8 +190,76 @@ img {
         position: absolute;
         top:0;
         margin-top: 0;
-        width: 100%
+        width: 100%;
+        z-index: 10;
     }
+}
+
+.header__menu{
+    .nav__link{
+        position: relative;
+        transition: all 0.3;
+        &:hover:after{
+            width: 150%;
+            left:-25%;
+            bottom: -25px;
+            content:"";
+            height: 3px;
+            background: #5500f2;
+            position: absolute;
+        }
+    }
+}
+
+.welcome-section{
+    background: #f8f7fc;
+}
+
+@media (max-width: 900px){
+    .header__menu{
+        .nav{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    
+    .scroll-btn-wr{
+        display: none;
+    }
+    .nav__list{
+       flex-wrap: wrap;
+       .nav__item{
+           width: 25%;
+       }
+    }
+    .user-info__name{
+        font-size: 48px;
+    }
+    .bottom-section{
+        min-height: auto;
+        padding: 220px 0 136px 0;
+    }
+
+    .next-btn, .prev-btn{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 560px){
+    .header{
+        .socials{
+            display: none;
+        }
+    }
+
+    .bottom-section{
+        padding-top: 100px;
+    }
+
+    
 }
 
 

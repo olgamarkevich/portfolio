@@ -18,8 +18,9 @@
     display: flex;
     justify-content: flex-end;
 
-    .skills-img-wr {
-        width: 504px;
+    .skills-img-container {
+        width: 36%;
+        position: relative;
 
     }
 
@@ -40,9 +41,8 @@ margin-bottom: 85px;
     }
 
     .skills-img {
-        position: relative;
-        width: 712px;
-        height: 627px;
+        position: absolute;
+        bottom: 0;
     }
 }
 
@@ -50,13 +50,13 @@ margin-bottom: 85px;
     position: relative;
 }
 
-.skills-img:after {
+.skills-img-container:after {
     content: "";
     position: absolute;
     background-image: url(../images/content/skills.png);
     width: 712px;
     height: 627px;
-    left: -9%;
+    left: -23%;
     top: 15%;
     background-position: center;
 }
@@ -130,5 +130,84 @@ margin-bottom: 85px;
         font-size: 18px;
         padding: 0 16px;
         text-align: center;
+        max-width: 136px;
+        left: 50%;
+        margin-left: -72px;
+    }
+}
+
+
+@media (max-width: 1550px){
+    .skills-img-container:after{
+        left: -54%;
+        background-size: 80%;
+        background-repeat: no-repeat;
+    }
+    .users-skills{
+        padding-left: 30px;
+    }
+    .circle__item{
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px){
+    .skills{
+        padding: 112px 0 0 0;
+        .skills-container{
+            .skills-info{
+                width: 100%;
+                text-align: center;
+                order:1;
+            }
+            .text-w{
+                max-width: 100%;
+            }
+        }
+        .skills-img:after{
+            display: none;
+        }
+        .users-skills{
+            padding: 0;
+        }
+        .skills-container{
+            flex-wrap: wrap;
+        }
+        .skills-img-container{
+            width: 100%;
+            order:2;
+            height: 320px;
+            &:after{
+            background-size: 350px;
+            background-repeat: no-repeat;
+            background-position: center;
+            left: auto;
+            bottom: auto;
+            width: 100%;
+            height: 100%;
+            top:auto;
+            }
+        }
+        
+    } 
+    .circle__item{
+        width: 25%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 670px){
+    .circle__item{
+        width: 50%;
+    }
+}
+
+@media (max-width: 560px){
+    .skills{
+        .section-title{
+            text-align: left;
+        }
     }
 }
