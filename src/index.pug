@@ -87,7 +87,6 @@ html(lang="en")
                                 p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
                             .about__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
                  
-
                 .triangles
                     svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
                         polygon(
@@ -106,30 +105,8 @@ html(lang="en")
                         .skills-info
                             .section-title Чем я могу для вас полезной
                             p.text-w Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-                            .users-skills
-                                .skills-line
-                                    .skills-title Front-end
-                                    .skills-circle
-                                            - var skillValue = ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js'];
-                                            - for (var i=0; i<=3; i++) {
-                                            .circle__item
-                                                svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
-                                                    circle.circle.circle_under(cx="78" cy="78" r="68")
-                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -50s")
-                                                .skill-title= skillValue[i]
-                                            - }
-                                    
-                                .skills-line
-                                    .skills-title Workflow
-                                    .skills-circle
-                                            - var skillValue = ['GIT', 'Terminal', 'Gulp', 'Webpack'];
-                                            - for (var i=0; i<=3; i++) {
-                                            .circle__item
-                                                svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
-                                                    circle.circle.circle_under(cx="78" cy="78" r="68")
-                                                    circle.circle.circle_above(cx="78" cy="78" r="68" style="animation-delay: -80s")
-                                                .skill-title= skillValue[i]
-                                            - }
+                            #skills-component
+                            
             
             section.portfolio
                 .container
@@ -283,5 +260,7 @@ html(lang="en")
                 stop(offset='0%', stop-color='#5500f2')
                 stop(offset='50%', stop-color='#5500f2')
                 stop(offset='100%', stop-color='#9100ed')
+
+    include ./templates/entry.pug
                                         
                             
