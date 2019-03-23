@@ -8,9 +8,7 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-
-    
-            
+  
     .wrapper
         .maincontent
             .welcome-section
@@ -139,31 +137,8 @@ html(lang="en")
                         +image('content/parallax/parallax_2-6.png', 'parallax__image', alt="parallax_6")
 
                 section.reviews
-                    .container
-                        .flex-reviews
-                            .section-title Что обо мне говорят
-                            .reviews__slider-controls
-                                .prev-btn
-                                .next-btn
-                        .reviews__slider
-                            .reviews__item
-                                .reviews__text
-                                    p Этот парень проходил обучение <br>веб-разработке не где-то, а в LoftSchool! 3,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                                .reviews-name-wr
-                                    .reviews__avatar
-                                        +image('content/reviews-person/01.jpg', 'avatar-img', alt="reviews-person_01")
-                                    .reviews__person
-                                        .reviews__name Ковальчук Дмитрий
-                                        .reviews__position Основатель Loftschool
-                            .reviews__item
-                                .reviews__text
-                                    p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                                .reviews-name-wr
-                                    .reviews__avatar
-                                        +image('content/reviews-person/02.jpg', 'avatar-img', alt="reviews-person_02")
-                                    .reviews__person
-                                        .reviews__name Владимир Сабанцев
-                                        .reviews__position Преподаватель
+                    #reviews-component
+                            
 
                                 
 

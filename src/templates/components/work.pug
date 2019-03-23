@@ -32,9 +32,7 @@ script(type="text/x-template")#slider-btns
         a(href="#" @click.prevent="$emit('slide', 'prev')").btn-down
 
 script(type="text/x-template")#slider-thumbs
-    .portfolio-nav(
-        worksCount="works.length"
-    )
+    .portfolio-nav
         .portfolio-nav__item(
             v-for="(work, index) in works" :key="work.id"
             :class="{active: currentWork.id === work.id }"

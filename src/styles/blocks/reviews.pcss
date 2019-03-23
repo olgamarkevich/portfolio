@@ -10,15 +10,15 @@
     display: flex;
 }
 .reviews__slider{
-    display: flex;
     max-width: 1000px;
-}
 
+    .carousel-cell {
+        width: 50%;
+    }
+}
 .flex-reviews{
     display: flex
 }
-
-
 
 .reviews__slider-controls{
     display: flex;
@@ -27,8 +27,7 @@
 .reviews__item {
     background: svg-load('quote.svg', fill=#dbe2ed, width=70px, height=70px) no-repeat;
     padding: 0 30px 0 130px;
-        background-position: 27px 6px;
-    width: 50%;
+    background-position: 27px 6px;
 
     .reviews__name {
         font-size: 18px;
@@ -132,4 +131,9 @@
         display: block;
     }
     }
+
+    .reviews__slider .carousel-cell{
+        width: 100%;
+    }
+    
 }
