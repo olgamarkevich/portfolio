@@ -111,35 +111,8 @@ html(lang="en")
             section.portfolio
                 .container
                     .section-title Мои работы
-                    .portfolio-container
-                        .portfolio-slider
-                            .portfolio-date_number 4
-                            .portfolio-preview
-                                +image('content/portfolio/01.png', 'about-img', alt="portfolio_01")
-                            .portfolio-nav
-                                .portfolio-nav__item
-                                    +image('content/portfolio/04.png', 'portfolio-img', alt="portfolio_04")
-                                .portfolio-nav__item
-                                    +image('content/portfolio/03.png', 'portfolio-img', alt="portfolio_03")
-                                .portfolio-nav__item
-                                    +image('content/portfolio/02.png', 'portfolio-img', alt="portfolio_02")
-                                .portfolio-nav__item.active
-                                    +image('content/portfolio/01.png', 'portfolio-img', alt="portfolio_01")
-                            .portfolio-dots
-                                .btn-up.no-active
-                                .btn-down
-                                
-                        .portfolio-date
-                            .portfolio-tags
-                                span.portfolio-tags__item HTML
-                                span.portfolio-tags__item CSS
-                                span.portfolio-tags__item Javascript
-                            .portfolio-name Сайт школы образования
-                            .portfolio-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                            a.portfolio-link(href="#") Посмотреть сайт
-                    
-                    
-                            
+                    #slider-component
+                                            
             .bottom-section
                 .triangles
                     svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")

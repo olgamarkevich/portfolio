@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "title": "Сайт агентства недвижимости",
+      "skills": "Html, Css, JavaScript",
+      "photo": "01.png",
+      "link": "http://investerra.fi",
+      "desc": "Investerra - финская компания, работающая на рынке недвижимости Финляндии."
+    },
+    {
+      "id": 2,
+      "title": "iQFreeze",
+      "skills": "Html, Css, JavaScript",
+      "photo": "02.png",
+      "link": "https://olgapyrko.com/iq/",
+      "desc": "iQFreeze* – современный подход к контролю перевозки скоропортящегося груза и управлению парком рефрижераторов"
+    },
+    {
+      "id": 3,
+      "title": "Куб три",
+      "skills": "Html, Css, JavaScript",
+      "photo": "03.png",
+      "link": "https://olgapyrko.com/kub",
+      "desc": "Куб три - лидер рынка по внедрению нестандартных решений на платформе SugarCRM/SuiteCRM"
+    },
+    {
+        "id": 4,
+        "title": "Доктор КОМП",
+        "skills": "Html, Css, JavaScript",
+        "photo": "04.png",
+        "link": "http://doctorcomp.io.swtest.ru/",
+        "desc": "Компьютерный ремонт и услуги"
+      }
+  ]

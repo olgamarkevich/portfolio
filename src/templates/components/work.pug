@@ -1,25 +1,59 @@
-script(type="text/x-template")#skills-list
-    .users-skills
-        .skills-line(v-for="skill in skills" :key="skill.skillsGroup")
-            skills-row(
-                :skill="skill"
-            )
 
-script(type="text/x-template")#skills-row
-    .skills-row-wrapper
-        .skills-title {{skill.skillsGroup}}
-        .skills-circle
-            .circle__item(v-for="(skillPercent, skillName) in skill.skills")
-                skill(
-                    :skillName="skillName"
-                    :skillPercent="skillPercent"
-                )
+script(type="text/x-template")#slider-container
+    .portfolio-container
+        display(
+        :works="works"
+        :currentWork="currentWork"
+        :currentIndex="currentIndex"
+        @slide="handleSlide"
+        @slideTo="handleSlideTo"
+        )
+        info(
+        :currentWork="currentWork"
+        )
 
-script(type="text/x-template")#skill
-        .circle__item-wr
-            .skill-title {{skillName}}
-            svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
-                circle.circle.circle_under(cx="78" cy="78" r="68")
-                circle.circle.circle_above(cx="78" cy="78" r="68" ref="color-circle")
+script(type="text/x-template")#slider-display
+    .portfolio-slider(:data-slide="currentIndex + 1")
+        .portfolio-date_number {{currentIndex+1}}
+        img(:src="currentWork.photo")
+        btns(
+          @slide="direction => $emit('slide', direction)"
+        )
+        thumbs(
+          :works="reversedWorks"
+          :currentWork="currentWork"
+          @slideTo="index => $emit('slideTo', index)"
+        )
         
 
+script(type="text/x-template")#slider-btns
+    .portfolio-dots
+        a(href="#" @click.prevent="$emit('slide', 'next')").btn-up
+        a(href="#" @click.prevent="$emit('slide', 'prev')").btn-down
+
+script(type="text/x-template")#slider-thumbs
+    .portfolio-nav(
+        worksCount="works.length"
+    )
+        .portfolio-nav__item(
+            v-for="(work, index) in works" :key="work.id"
+            :class="{active: currentWork.id === work.id }"
+            @click="$emit('slideTo', index)"
+        )
+            img(:src="work.photo" alt="")
+
+script(type="text/x-template")#slider-info
+    .portfolio-date
+        tags(
+        :tagsArray="tagsArray"
+        )
+        .portfolio-name {{currentWork.title}}
+        .portfolio-description {{currentWork.desc}}
+        a(:href="currentWork.link" target="_blank").portfolio-link Посмотреть сайт
+
+script(type="text/x-template")#slider-tags
+    .portfolio-tags
+        span.portfolio-tags__item(v-for="tag in tagsArray") {{tag}}
+
+
+                                    
