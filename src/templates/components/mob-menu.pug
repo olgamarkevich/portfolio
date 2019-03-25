@@ -1,0 +1,32 @@
+script(type="text/x-template")#mob-menu
+    .mob-menu_wrapper(v-bind:class="{open: openCls}")
+        .mob-menu-close(@click="close")
+            +icon('close', 'close-icon')
+        .mob-menu_nav
+            ul.nav__list
+                - 
+                    var menu = [
+                        ['Главная', 'home'],
+                        ['Обо мне', 'about'],
+                        ['Навыки', 'skills'],
+                        ['Работы', 'portfolio'],
+                        ['Отзывы', 'reviews'],
+                        ['Связаться', 'feedback'],
+                    ]
+                each item in menu
+                    li.nav__item
+                        a(href="#" v-scroll-to=`'#${item[1]}'` @click="close").nav__link #{item[0]}
+        .mob-menu_social
+            ul.socials
+                - var socials = ['insta', 'vk', 'github'];
+                each item in socials
+                    li.socials__item
+                        a(href="").socials__link
+                            +icon(`${item}`, 'socials__icon')    
+
+script(type="text/x-template")#mob-menu-toggle
+    .mobile-menu(@click="open")
+        .mobile-menu_line
+        .mobile-menu_line
+        .mobile-menu_line
+    

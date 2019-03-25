@@ -11,7 +11,7 @@ html(lang="en")
   
     .wrapper
         .maincontent
-            .welcome-section
+            .welcome-section#home
                 .section.parallax
                     .parallax__layer(data-speed="0.2")
                         +image('content/parallax/parallax_1.png', 'parallax__image', alt="parallax_1")
@@ -31,7 +31,7 @@ html(lang="en")
                 .section.hero 
                     .container.hero__container
                         header.header
-                            .logo ОМ
+                            .logo ОM
                             .header__menu#header-scroll
                                 nav.nav
                                     ul.nav__list
@@ -55,10 +55,7 @@ html(lang="en")
                                             a(href="").socials__link
                                                 +icon(`${item}`, 'socials__icon')
 
-                            .mobile-menu
-                                .mobile-menu_line
-                                .mobile-menu_line
-                                .mobile-menu_line
+                            #mob-menu-toggle-component
 
                         .top__content
                             .user-info
@@ -182,12 +179,6 @@ html(lang="en")
                             .footer-user-name Ольга<br> Маркевич
                             .footer-user-desk Личный сайт<br> веб-разработчика
                     .footer__right
-                        //- nav.nav.nav--color-white#footer-scroll
-                        //-     ul.nav__list
-                        //-         - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                        //-             each item in menu
-                        //-                 li.nav__item
-                        //-                     a(href="").nav__link #{item}
                         nav.nav.nav--color-white#footer-scroll
                             ul.nav__list
                                 - 
@@ -227,6 +218,8 @@ html(lang="en")
                 stop(offset='50%', stop-color='#5500f2')
                 stop(offset='100%', stop-color='#9100ed')
 
+    #mob-menu-component
     include ./templates/entry.pug
+    
                                         
                             

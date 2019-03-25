@@ -1,0 +1,44 @@
+.mob-menu_wrapper {
+    background: #fff;
+    position: fixed;
+    right: -23rem;
+    bottom: 0;
+    top: 0;
+    width: 23rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: right .5s;
+    padding: 50px 60px;
+    .mob-menu_nav{
+        width: 100%;
+        .nav__item{
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        .nav__link{
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+        }
+    } 
+}
+
+.mob-menu_wrapper.open {
+    right: 0;
+}
+
+.close-icon{
+    width: 20px;
+    height: 20px;
+    fill:$text-color;
+}
+
+.mob-menu-close{
+    align-self: flex-end;
+}
+
+
