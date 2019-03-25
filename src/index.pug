@@ -32,13 +32,22 @@ html(lang="en")
                     .container.hero__container
                         header.header
                             .logo ОМ
-                            .header__menu
+                            .header__menu#header-scroll
                                 nav.nav
                                     ul.nav__list
-                                        - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                                        - 
+                                            var menu = [
+                                                ['Главная', 'home'],
+                                                ['Обо мне', 'about'],
+                                                ['Навыки', 'skills'],
+                                                ['Работы', 'portfolio'],
+                                                ['Отзывы', 'reviews'],
+                                                ['Связаться', 'feedback'],
+                                            ]
                                         each item in menu
                                             li.nav__item
-                                                a(href="").nav__link #{item}
+                                                a(href="#" v-scroll-to=`'#${item[1]}'`).nav__link #{item[0]}
+
                             ul.socials
                                     - var socials = ['insta', 'vk', 'github'];
                                     each item in socials
@@ -57,10 +66,10 @@ html(lang="en")
                                 .user-info__name Ольга<br> Маркевич
                     
                         .scroll-btn-wr
-                            .scroll-btn Скролл
+                            .scroll-btn#arrow-scroll Скролл
                                 +icon('scroll', 'link-class scroll-icon')
                 
-                section.about
+                section.about#about
                     .container.about-container
                         .about__left
                             .user-date
@@ -96,7 +105,7 @@ html(lang="en")
                     )
 
 
-            section.skills
+            section.skills#skills
                 .container
                     .skills-container
                         .skills-img-container
@@ -106,7 +115,7 @@ html(lang="en")
                             #skills-component
                             
             
-            section.portfolio
+            section.portfolio#portfolio
                 .container
                     .section-title Мои работы
                     #slider-component
@@ -136,13 +145,10 @@ html(lang="en")
                     .parallax__layer2(data-speed="0.1")
                         +image('content/parallax/parallax_2-6.png', 'parallax__image', alt="parallax_6")
 
-                section.reviews
+                section.reviews#reviews
                     #reviews-component
-                            
 
-                                
-
-                section.feedback
+                section.feedback#feedback
                     .container
                         .section-title Связаться со мной
                         form.wi-form
@@ -168,8 +174,6 @@ html(lang="en")
                             button.wi-btn Отправить
                         
                         
-                        
-                       
             footer.footer
                 .container.flex-wr
                     .footer__left
@@ -178,12 +182,26 @@ html(lang="en")
                             .footer-user-name Ольга<br> Маркевич
                             .footer-user-desk Личный сайт<br> веб-разработчика
                     .footer__right
-                        nav.nav.nav--color-white
+                        //- nav.nav.nav--color-white#footer-scroll
+                        //-     ul.nav__list
+                        //-         - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                        //-             each item in menu
+                        //-                 li.nav__item
+                        //-                     a(href="").nav__link #{item}
+                        nav.nav.nav--color-white#footer-scroll
                             ul.nav__list
-                                - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                                    each item in menu
-                                        li.nav__item
-                                            a(href="").nav__link #{item}
+                                - 
+                                    var menu = [
+                                        ['Главная', 'home'],
+                                        ['Обо мне', 'about'],
+                                        ['Навыки', 'skills'],
+                                        ['Работы', 'portfolio'],
+                                        ['Отзывы', 'reviews'],
+                                        ['Связаться', 'feedback'],
+                                    ]
+                                each item in menu
+                                    li.nav__item
+                                        a(href="#" v-scroll-to=`'#${item[1]}'`).nav__link #{item[0]}
 
                         .footer-info-wr
                             .footer-col
