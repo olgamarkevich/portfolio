@@ -49,11 +49,16 @@ html(lang="en")
                                                 a(href="#" v-scroll-to=`'#${item[1]}'`).nav__link #{item[0]}
 
                             ul.socials
-                                    - var socials = ['insta', 'vk', 'github'];
-                                    each item in socials
-                                        li.socials__item
-                                            a(href="").socials__link
-                                                +icon(`${item}`, 'socials__icon')
+                                - 
+                                    var socials = [
+                                        ['insta', 'https://www.instagram.com/olga_pyrko/'], 
+                                        ['vk', 'https://vk.com/olga_pyrko'],
+                                        ['github', 'https://github.com/olgamarkevich'],
+                                    ]
+                                each item in socials
+                                    li.socials__item
+                                        a(href=`${item[1]}` target="_blank").socials__link
+                                            +icon(`${item[0]}`, 'socials__icon')
 
                             #mob-menu-toggle-component
 
@@ -198,12 +203,18 @@ html(lang="en")
                             .footer-col
                                 article.footer-text 
                                     .p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                                ul.socials.socials-border
-                                    - var socials = ['insta', 'vk', 'github'];
+
+                                ul.socials.socials.socials-border
+                                    - 
+                                        var socials = [
+                                            ['insta', 'https://www.instagram.com/olga_pyrko/'], 
+                                            ['vk', 'https://vk.com/olga_pyrko'],
+                                            ['github', 'https://github.com/olgamarkevich'],
+                                        ]
                                     each item in socials
                                         li.socials__item
-                                            a(href="").socials__link
-                                                +icon(`${item}`, 'socials__icon')
+                                            a(href=`${item[1]}` target="_blank").socials__link
+                                                +icon(`${item[0]}`, 'socials__icon')
 
 
                             .footer-col
