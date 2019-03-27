@@ -68,7 +68,7 @@ html(lang="en")
                                 .user-info__name Ольга<br> Маркевич
                     
                         .scroll-btn-wr
-                            .scroll-btn#arrow-scroll(v-scroll-to="'#about'") Скролл
+                            button.scroll-btn#arrow-scroll(v-scroll-to="'#about'" ) Скролл
                                 +icon('scroll', 'link-class scroll-icon')
                 
                 section.about#about
@@ -159,20 +159,20 @@ html(lang="en")
                                     .wi-line
                                         label.form-label Введите ваше имя
                                         .line-wr
-                                            +icon('user', 'line-icon')
                                             input.form-input(placeholder="Ковальчук Дмитрий")
+                                            +icon('user', 'line-icon')
                                 .flex-col
                                     .wi-line
                                         label.form-label Введите ваш email
                                         .line-wr
-                                            +icon('envelope', 'line-icon')
                                             input.form-input(placeholder="loftschool@study.com")
+                                            +icon('envelope', 'line-icon')
                             .wi-line
                                     .wi-line
                                             label.form-label Сообщение к письму
                                             .line-wr
-                                                +icon('message', 'line-icon')
                                                 textarea.form-textarea(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+                                                +icon('message', 'line-icon')
                             button.wi-btn Отправить
                         
                         

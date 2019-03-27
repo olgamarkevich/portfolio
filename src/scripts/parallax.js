@@ -14,18 +14,24 @@ window.addEventListener('scroll', e => {
     moveLayersDependsOnScroll(wScroll)
 });
 
-const parallax2 = document.querySelector('.parallax-bottom')
-const layers2 = parallax2.children;
 
-function moveLayersDependsOnScroll2(wScroll2) {
-    Array.from(layers2).forEach(layer2 => {
-        const divider2 = layer2.dataset.speed;
-        const strafe2 = wScroll2 * divider2 / 10;
-        layer2.style.transform = 'translateY(-' + strafe2 + '%)';
+
+
+    const parallax2 = document.querySelector('.parallax-bottom')
+    const layers2 = parallax2.children;
+    
+    function moveLayersDependsOnScroll2(wScroll2) {
+        Array.from(layers2).forEach(layer2 => {
+            const divider2 = layer2.dataset.speed;
+            const strafe2 = wScroll2 * divider2 / 10;
+            layer2.style.transform = 'translateY(-' + strafe2 + '%)';
+        });
+    }
+    
+    window.addEventListener('scroll', e => {
+        const wScroll2 = -parallax2.getBoundingClientRect().top;
+        moveLayersDependsOnScroll2(wScroll2)
     });
-}
 
-window.addEventListener('scroll', e => {
-    const wScroll2 = -parallax2.getBoundingClientRect().top;
-    moveLayersDependsOnScroll2(wScroll2)
-});
+
+
