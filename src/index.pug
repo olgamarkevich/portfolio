@@ -148,28 +148,32 @@ html(lang="en")
                 section.feedback#feedback
                     .container
                         .section-title Связаться со мной
-                        form.wi-form
-                            .flex-row
-                                .flex-col
-                                    .wi-line
-                                        label.form-label Введите ваше имя
-                                        .line-wr
-                                            +icon('user', 'line-icon')
-                                            input.form-input(placeholder="Ковальчук Дмитрий")
-                                .flex-col
-                                    .wi-line
-                                        label.form-label Введите ваш email
-                                        .line-wr
-                                            +icon('envelope', 'line-icon')
-                                            input.form-input(placeholder="loftschool@study.com")
-                            .wi-line
-                                    .wi-line
-                                            label.form-label Сообщение к письму
+                        #fb-component
+                            form.wi-form
+                                .flex-row
+                                    .flex-col
+                                        .wi-line
+                                            label.form-label Введите ваше имя
                                             .line-wr
-                                                +icon('message', 'line-icon')
-                                                textarea.form-textarea(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
-                            button.wi-btn Отправить
-                        
+                                                +icon('user', 'line-icon')
+                                                input.form-input(v-model="$v.fbName.$model" :class="status($v.fbName)" placeholder="Ковальчук Дмитрий")
+                                                span(v-if="$v.fbName.$error").error-msg Заполните поле
+                                    .flex-col
+                                        .wi-line
+                                            label.form-label Введите ваш email
+                                            .line-wr
+                                                +icon('envelope', 'line-icon')
+                                                input.form-input(v-model="$v.fbMail.$model" :class="status($v.fbMail)" placeholder="loftschool@study.com")
+                                                span(v-if="!$v.fbMail.required && $v.fbMail.$dirty").error-msg Заполните поле
+                                                span(v-if="!$v.fbMail.email && $v.fbMail.$dirty").error-msg Введите корректный email
+                                .wi-line
+                                        .wi-line
+                                                label.form-label Сообщение к письму
+                                                .line-wr
+                                                    +icon('message', 'line-icon')
+                                                    textarea.form-textarea(v-model="$v.fbMsg.$model" :class="status($v.fbMsg)" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+                                                    span(v-if="$v.fbMsg.$error").error-msg Заполните поле
+                                button.wi-btn(:disabled="!formIsValid($v)") Отправить
                         
             footer.footer
                 .container.flex-wr

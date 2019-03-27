@@ -5,7 +5,7 @@
         .admin-header_l
           .admin-header_user
             .avatar_wr
-              .avatar_img
+              img(src="./images/user.jpg").avatar_img
             .user-name Ольга Маркевич
           .header_panel_title Панель администрирования
         .admin-header_r
@@ -19,11 +19,93 @@
                 a(href="").admin-nav__link #{item}
     section.admin-content
       .container
-        p dfgdfg
+        .admin-title_container
+          .admin-title Блок «Обо мне»
+          a(href="#").btn-add_link
+            .btn-add +
+            .btn-add-span Добавить группу
+        .adm-row
+          .adm_block
+            .adm_block_title
+              .input(placeholder="Название новой группы").adm_block_input
+              .adm_block_title_btns
+            ul.adm_skills_list
+              li.adm_skills_item
+          .adm_block
+          .adm_block
+
 
 </template>
 
 <style lang="pcss">
+
+.adm-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  grid-gap:30px;
+}
+
+
+.adm_block{
+  background: #fff;
+  padding: 15px;
+  box-shadow: 4px 3px 20px 0px rgba(0, 0, 0, 0.07); 
+}
+
+.admin-title_container{
+  margin-bottom: 50px;
+}
+
+.btn-add_link{
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  .btn-add-span{
+    color:#383bcf;
+    font-weight: 600;
+    font-size:16px;
+    margin-left:12px;
+  }
+}
+
+.admin-title_container{
+  display: flex;
+  align-items: center;
+  .btn-add_link{
+    margin-left: 40px;
+  }
+  .btn-add_link{
+    .btn-add{
+      width: 20px;
+      height: 20px;
+      font-size:15px;
+    }
+  }
+}
+
+.btn-add{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 600;
+    color:#fff;
+    background: linear-gradient(90deg,#006aed,#3f35cb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover{
+      background: linear-gradient(90deg,#3f35cb,#006aed);
+    }
+}
+
+.admin-title{
+  font-size: 21px;
+  font-weight: 700;
+}
 
 .admin-content{
       background-image: url(images/admin-bg.jpg);
@@ -52,7 +134,7 @@
     .admin-nav__item{
       margin-right: 57px;
       .admin-nav__link{
-            text-decoration: none;
+      text-decoration: none;
       }
       &:hover{
         color:#383bcf;
