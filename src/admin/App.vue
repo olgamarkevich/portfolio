@@ -7,7 +7,7 @@
             .avatar_wr
               img(src="./images/user.jpg").avatar_img
             .user-name Ольга Маркевич
-          .header_panel_title Панель администрирования
+          .header_panel_title Панель администрированияfg
         .admin-header_r
           .out-btn Выйти
     section.admin-nav
@@ -23,14 +23,18 @@
           .admin-title Блок «Обо мне»
           a(href="#").btn-add_link
             .btn-add +
-            .btn-add-span Добавить группу
+            .btn-add-span Добавить группум
         .adm-row
           .adm_block
             .adm_block_title
-              .input(placeholder="Название новой группы").adm_block_input
+              input(placeholder="Название новой группы").adm_block_input
               .adm_block_title_btns
+                .btn-edit
+                .btn-edit.v2
             ul.adm_skills_list
               li.adm_skills_item
+                p dfg
+                h4 dfgdfgвар
           .adm_block
           .adm_block
 
@@ -38,6 +42,25 @@
 </template>
 
 <style lang="pcss">
+
+.btn-edit{
+  background: svg-load('edit.svg', fill=#000) center center no-repeat / contain;
+  width: 30px;
+  height: 30px;
+  fill: #000;
+}
+
+
+
+.adm_block_input{
+  border:none;
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+
+.adm_block_title{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+}
 
 .adm-row{
   display: grid;
@@ -108,7 +131,7 @@
 }
 
 .admin-content{
-      background-image: url(images/admin-bg.jpg);
+      /* background-image: url(images/admin-bg.jpg); */
       position: relative;
       min-height:calc(100vh - 155px);
       padding:30px 0;
