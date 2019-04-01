@@ -1,372 +1,37 @@
-
 <template lang="pug">
-
   .page-admin
-    section.admin-header
-      .container.admin-header_container
-        .admin-header_l
-          .admin-header_user
-            .avatar_wr
-              img(src="./images/user.jpg").avatar_img
-            .user-name Ольга Маркевич
-          .header_panel_title Панель администрирования
-        .admin-header_r
-          .out-btn Выйти
-    section.admin-nav
-      .container.admin-nav_container
-        ul.admin-nav_list
-          - var admin_nav_v = ['Обо мне', 'Работы', 'Отзывы'];
-            each item in admin_nav_v
-              li.admin-nav__item
-                a(href="").admin-nav__link #{item}
+    headerAdm
+    navAdm
     section.admin-content
       .container
-        .admin-title_container
-          .admin-title Блок «Обо мне»
-          a(href="#").btn-add_link
-            .btn-add +
-            .btn-add-span Добавить группу
-        .adm-row.content-about
-          .adm_block.new_add_skills
-            .adm_block_title
-              input(placeholder="Название новой группы").adm_block_input
-              .adm_block_title_btns
-                button.btn-tick
-                button.btn-close
-          
-            .adm_add_skill
-              input(placeholder="Новый навык").adm_block_input
-              .persent-skills
-                input(value="100").adm_block_input
-                span.input_percent %
-              button.btn-add +
-
-          .adm_block
-            .adm_block_title
-              input(value="Workflow").adm_block_input
-              .adm_block_title_btns
-                button.btn-tick
-                button.btn-close
-            ul.adm_skills_list
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-            .adm_add_skill
-              input(placeholder="Новый навык").adm_block_input
-              .persent-skills
-                input(value="100").adm_block_input
-                span.input_percent %
-              button.btn-add +
-          .adm_block
-            .adm_block_title
-              input(value="Frontend").adm_block_input
-              .adm_block_title_btns
-                button.btn-edit
-            ul.adm_skills_list
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-tick
-                  button.btn-close
-              li.adm_skills_item
-                input(value="Git").adm_block_input
-                .persent-skills
-                  input(value="100").adm_block_input
-                  span.input_percent %
-                .adm_block_title_btns
-                  button.btn-edit
-                  button.btn-del
-            .adm_add_skill
-              input(placeholder="Новый навык").adm_block_input
-              .persent-skills
-                input(value="100").adm_block_input
-                span.input_percent %
-            
-              button.btn-add +
-
-    
-    
-    section.admin-content
-      .container
-          .admin-title_container
-            .admin-title Блок «Отзывы»
-          .adm_block.adm-top
-              .adm_block_title
-                .adm_block_title_span Новый отзыв
-              .adm_block_wrapper.wrapper_w70
-                .adm_user_photo
-                  button.user_photo
-                  button.btn Добавить фото
-                .adm-info
-                  .adm-info_row
-                    .adm-info_line
-                      .adm-info_label Имя автора
-                      input(placeholder="Ковальчук Дмитрий").adm_block_input
-
-                    .adm-info_line
-                      .adm-info_label Титул автора
-                      input(placeholder="Основатель LoftSchool").adm_block_input
-
-                  .adm-info_line
-                    .adm-info_label Отзыв
-                    textarea.adm-textarea
-                  .adm-info-btns
-                    button.btn Отмена
-                    button.btn_s Сохранить
-
-          .adm-row.row3
-            button.adm_block.add_block
-              .add_block_plus +
-              .add_block_span Добавить<br> отзыв
-
-            .adm_block
-              .adm_block_title
-                  .reviews-name-wr
-                      .reviews__avatar
-                          img(src="./images/user.jpg").avatar_img
-                      .reviews__person
-                          .reviews__name Владимир Сабанцев
-                          .reviews__position Преподаватель
-              .adm_block_text
-                p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-            .adm_block
-              .adm_block_title
-                  .reviews-name-wr
-                      .reviews__avatar
-                          img(src="./images/user.jpg").avatar_img
-                      .reviews__person
-                          .reviews__name Ковальчук Дмитрий
-                          .reviews__position Преподаватель
-              .adm_block_text
-                p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-            .adm_block
-              .adm_block_title
-                  .reviews-name-wr
-                      .reviews__avatar
-                          img(src="./images/user.jpg").avatar_img
-                      .reviews__person
-                          .reviews__name Ковальчук Дмитрий
-                          .reviews__position Основатель Loftschool
-              .adm_block_text
-                p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-    
-    section.admin-content
-      .container
-          .admin-title_container
-            .admin-title Блок «Работы»
-          .adm_block.adm-top
-              .adm_block_title
-                .adm_block_title_span Редактирование работы
-              .adm_block_wrapper.edit-work-container
-                .adm-work-load
-                  p.load_label Перетащите или загрузите для загрузки изображения
-                  button.btn_s Загрузить
-                .adm-info
-                  .adm-info_line
-                      .adm-info_label Название
-                      input(placeholder="Ковальчук Дмитрий").adm_block_input
-
-                  .adm-info_line
-                      .adm-info_label Ссылка
-                      input(placeholder="Основатель LoftSchool").adm_block_input
-
-                  .adm-info_line
-                    .adm-info_label Описание
-                    textarea.adm-textarea
-
-                  .adm-info_line
-                      .adm-info_label Добавление тэга
-                      input().adm_block_input
-
-                  .adm-info-btns
-                    button.btn Отмена
-                    button.btn_s Сохранить
-
-          .adm-row.row3
-            button.adm_block.add_block
-              .add_block_plus +
-              .add_block_span Добавить <br>работу
-
-            .adm_block
-              .work-image-container
-                  img(src="./images/portfolio/01.png").work-image
-              .adm_block_text
-                .work-title Сайт школы образования
-                p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах, Только пожалуйста, не загружайте сайт на слишком старых браузерах браузерах браузерах
-              a(href="#").work-link http://loftschool.ru
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-            .adm_block
-              .work-image-container
-                  img(src="./images/portfolio/02.png").work-image
-              .adm_block_text
-                .work-title Сайт школы образования
-                p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-              a(href="#").work-link http://loftschool.ru
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-            .adm_block
-              .work-image-container
-                  img(src="./images/portfolio/03.png").work-image
-              .adm_block_text
-                .work-title Сайт школы образования
-                p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-              a(href="#").work-link http://loftschool.ru
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-            .adm_block
-              .work-image-container
-                  img(src="./images/portfolio/04.png").work-image
-              .adm_block_text
-                .work-title Сайт школы образования
-                p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-              a(href="#").work-link http://loftschool.ru
-              .adm_block_btns
-                button.btn-edit.btn-icon
-                  span.btn-text Править
-                button.btn-close.btn-icon
-                  span.btn-text Удалить
-
-        
-
+        about
+        reviews
+        work
 </template>
 
+<script>
+  import headerAdm from './components/headerAdm';
+  import navAdm from './components/navAdm';
+  import about from './components/about';
+  import reviews from './components/reviews';
+  import work from './components/work';
+
+  export default{
+    name:'app',
+    components:{
+      headerAdm,
+      navAdm,
+      about,
+      reviews,
+      work
+    },
+    data(){
+      return{}
+    }
+  }
+</script>
+
 <style lang="pcss">
-
-.edit-work-container{
-  .adm-work-load{
-    width: 40%;
-  }
-  .adm-info{
-    width: 55%;
-  }
-}
-
-.adm-work-load{
-  width: 28%;
-  margin-right: 2%;
-  background: #dee4ed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 270px;
-  margin-bottom: 30px;
-  padding: 30px;
-}
-
-.load_label{
-  font-weight: 600;
-  opacity: 0.5;
-  line-height: 2em;
-  max-width: 240px;
-  margin-bottom: 20px;
-
-}
-
-.adm_block_text{
-  .work-title{
-  font-size: 18px;
-  font-weight:700;
-  opacity: 1.0;
-  margin-bottom:10px;
-  }
-}
-
-.work-link{
-  text-decoration: none;
-  color:#383bcf;
-  font-weight: 600;
-  margin-bottom: 30px;
-  display: inline-block;
-  transition: all 0.3s;
-  &:hover{
-    opacity: 0.8;
-  }
-}
-
-
-.work-image-container{
-  margin: -25px -25px 20px -25px;
-}
-
-.work-image{
-  width: auto;
-  max-width: 100%;
-}
 
 .btn{
   font-size: 16px;
@@ -396,34 +61,12 @@
     background: linear-gradient(90deg,#3f35cb,#006aed);
   }
 }
-
-.user_photo{
-  width: 200px;
-  height: 200px;
-  background-color: #dee4ed;
-  border-radius: 50%;
-  margin-bottom: 30px;
-   background-image: svg-load('user.svg', fill=#fff);
-   background-size: 115px;
-   background-repeat: no-repeat;
-   background-position: center;
-   outline: none;
-   display: block;
-}
-
 .adm_block_wrapper{
   display: flex;
   align-items: flex-start;
 }
 .adm-info{
   width: 70%;
-}
-
-.adm_user_photo{
-  width: 30%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 .adm-info-btns{
@@ -433,7 +76,6 @@
   .btn_s{
     margin-left: 55px;
   }
-  
 }
 
 .wrapper_w70{
@@ -501,6 +143,7 @@
       align-items: center;
       font-family: Open Sans,Helvetica,sans-serif;
 }
+
 .add_block{
   .add_block_plus{
   color:#fff;
@@ -527,36 +170,16 @@
   }
 }
 
-
-.adm_block_title {
-  .reviews-name-wr{
-    display: flex;
-    .avatar_img{
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
-    .reviews__name{
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    .reviews__position{
-      font-size: 16px;
-      opacity: 0.5;
-      font-weight: 600;
-    }
-  }
-}
-
 .adm_block_text{
   font-size: 16px;
   font-weight: 600;
-  opacity: 0.7;
+  
   line-height: 1.875;
   height: 182px;
   overflow: hidden;
+  p{
+    opacity: 0.7;
+  }
 }
 
 .adm_block_btns{
@@ -593,47 +216,6 @@
   }
 }
 
-.content-about {
-  .adm_block{
-    padding-bottom: 70px;
-  }
-}
-
-.adm_skills_list{
-  margin-bottom: 40px;
-  .adm_block_input{
-    border-bottom: 1px solid transparent;
-    &:focus{
-      border-bottom: 1px solid #000;
-    }
-  }
-}
-
-.adm_skills_item{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  .adm_block_input{
-    width: calc(100% - 180px);
-  }
-}
-
-.persent-skills {
-   position: relative;
-   width: 75px;
-  .adm_block_input{
-    width: 75px;
-    display: block;
-    padding-left:6px;
-    padding-right:30px;
-  }
-  .input_percent{
-    position: absolute;
-    right: 12px;
-    top:-2px;
-  }
-}
-
 .adm_block_input{
   font-size: 16px;
   color:$text-color;
@@ -648,31 +230,6 @@
     font-size: 18px;
     width: 50%;
     font-weight:500;
-  }
-}
-
-.input_percent{
-  position: relative;
-  opacity: 0.7;
-}
-
-.adm_add_skill{
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  left: 0;
-  padding: 15px;
-  .persent-skills{
-    margin: 0 25px 0 15px;
-  }
-  .adm_block_input{
-    padding: 0 0 10px 15px;
-  }
-  .btn-add{
-    margin-right: 15px;
   }
 }
 
@@ -716,8 +273,6 @@
   }
 }
 
-
-
 .adm_block_input{
   border:none;
   outline: none;
@@ -740,7 +295,6 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
 
 .adm_block{
   background: #fff;
@@ -824,79 +378,6 @@
         z-index: 100;
       }
 }
-
-.admin-nav_list{
-  display: flex;
-  padding: 30px 0;
-  margin-left: 30px;
-    align-items: center;
-    .admin-nav__item{
-      margin-right: 57px;
-    &:last-child{
-        margin-right: 0;
-      }
-      .admin-nav__link{
-      text-decoration: none;
-      color:$text-color;
-      
-      &:hover{
-        color:#383bcf;
-      }
-      }
-    }
-}
-
-.out-btn{
-  color: #fff;
-  opacity: .7;
-  line-height: 1.3em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-  cursor: pointer;
-}
-
-.admin-header_l{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.header_panel_title{
-  font-size:14px;
-  opacity: .5;
-}
-
-.admin-header_user{
-  margin-right: 25px;
-  align-items: center;
-  display: flex;
-  .user-name{
-  font-size:18px;
-      font-weight: 600;
-}
-  .avatar_wr,
-  .avatar_img{
-        width: 43px;
-    height: 43px;
-        border-radius: 50%;
-  }
-  .avatar_wr{
-    margin-right:10px;
-  }
-}
-
-
-.admin-header_container{
-    align-items: center;
-      display: flex;
-      justify-content: space-between;
-}
-
-.admin-header{
-      background: linear-gradient(90deg,#3e3e59,#454573);
-      color:#fff;
-      padding: 15px 0;
-}
-
 
 @import "normalize.css";
 
@@ -985,6 +466,9 @@ p {
 .user_photo{
   margin-bottom: 20px;
 }
+.input_new_slills{
+  width: 50%;
+}
 
 }
 
@@ -995,7 +479,6 @@ p {
       grid-template-rows: auto 1fr;
       grid-gap: 20px;
 }
-
 
 .adm_block{
   padding: 25px 10px;
@@ -1053,6 +536,7 @@ p {
 
   .admin-title{
     font-size: 18px;
+    width: 100%;
   }
 
 .adm_add_skill .btn-add{
@@ -1128,10 +612,10 @@ p {
   flex-wrap: wrap;
 }
 
-
+.admin-work .adm_block_text{
+  height: auto;
+}
 
 }
 
-
-  
 </style>
