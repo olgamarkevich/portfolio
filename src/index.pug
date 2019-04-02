@@ -173,7 +173,7 @@ html(lang="en")
                                                     +icon('message', 'line-icon')
                                                     textarea.form-textarea(v-model="$v.fbMsg.$model" :class="status($v.fbMsg)" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
                                                     span(v-if="$v.fbMsg.$error").error-msg Заполните поле
-                                button.wi-btn(:disabled="!formIsValid($v)") Отправить
+                                button.wi-btn(:disabled="!formIsValid($v)" @click.prevent="submitFb") Отправить
                         
             footer.footer
                 .container.flex-wr

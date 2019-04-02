@@ -38,63 +38,14 @@
       button.adm_block.add_block
         .add_block_plus +
         .add_block_span Добавить <br>работу
-
-      .adm_block
-        .work-image-container
-            img(src="../images/portfolio/01.png").work-image
-        .adm_block_text
-          .work-title Сайт школы образования
-          p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах, Только пожалуйста, не загружайте сайт на слишком старых браузерах браузерах браузерах
-        a(href="#").work-link http://loftschool.ru
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
-      .adm_block
-        .work-image-container
-            img(src="../images/portfolio/02.png").work-image
-        .adm_block_text
-          .work-title Сайт школы образования
-          p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        a(href="#").work-link http://loftschool.ru
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
-
-      .adm_block
-        .work-image-container
-            img(src="../images/portfolio/03.png").work-image
-        .adm_block_text
-          .work-title Сайт школы образования
-          p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        a(href="#").work-link http://loftschool.ru
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
-
-      .adm_block
-        .work-image-container
-            img(src="../images/portfolio/04.png").work-image
-        .adm_block_text
-          .work-title Сайт школы образования
-          p.work-desk Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        a(href="#").work-link http://loftschool.ru
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
+      workItem
+      workItem
       workItem
         
 </template>
 
 <script>
-  import workItem from './components/workItem';
+  import workItem from './workItem';
 
   export default{
     components:{
@@ -153,6 +104,7 @@
     border-radius:15px;
     padding:8px 10px 8px 15px;
     margin-right:15px;
+    margin-bottom:5px;
     .del-tags {
       background: none;
       background: svg-load('close.svg', fill=$text-color) center right no-repeat / contain;
@@ -197,5 +149,33 @@
   max-width: 240px;
   margin-bottom: 20px;
 
+}
+
+@media (max-width: 640px){
+.edit-work-container .adm-work-load{
+  width: 100%;
+  margin-right: 0;
+  min-height: auto;
+}
+
+.edit-work-container .adm-info{
+  width: 100%;
+}
+
+.edit-work-container{
+  flex-wrap: wrap;
+}
+
+.admin-work .adm_block_text{
+  height: auto;
+}
+
+.adm_block_title .reviews-name-wr .reviews__name{
+  font-size: 16px;
+}
+
+.adm_block_title .reviews-name-wr .reviews__position{
+  font-size: 14px;
+}
 }
 </style>

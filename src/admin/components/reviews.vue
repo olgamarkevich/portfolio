@@ -23,59 +23,27 @@
           .adm-info-btns
             button.btn Отмена
             button.btn_s Сохранить
+    
     .adm-row.row3
       button.adm_block.add_block
         .add_block_plus +
         .add_block_span Добавить<br> отзыв
-      .adm_block
-        .adm_block_title
-          .reviews-name-wr
-            .reviews__avatar
-              img(src="../images/user.jpg").avatar_img
-            .reviews__person
-              .reviews__name Владимир Сабанцев
-              .reviews__position Преподаватель
-        .adm_block_text
-          p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
-      .adm_block
-        .adm_block_title
-            .reviews-name-wr
-              .reviews__avatar
-                img(src="../images/user.jpg").avatar_img
-              .reviews__person
-                .reviews__name Ковальчук Дмитрий
-                .reviews__position Преподаватель
-        .adm_block_text
-          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
-      .adm_block
-        .adm_block_title
-            .reviews-name-wr
-              .reviews__avatar
-                img(src="../images/user.jpg").avatar_img
-              .reviews__person
-                .reviews__name Ковальчук Дмитрий
-                .reviews__position Основатель Loftschool
-        .adm_block_text
-          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        .adm_block_btns
-          button.btn-edit.btn-icon
-            span.btn-text Править
-          button.btn-close.btn-icon
-            span.btn-text Удалить
+      reviewsItem
+      reviewsItem
+      reviewsItem
+      
         
 </template>
 
+<script>
+  import reviewsItem from './reviewsItem';
 
+  export default{
+    components:{
+      reviewsItem
+    }
+  }
+</script>
 
 <style lang="pcss">
 .user_photo{
@@ -120,6 +88,13 @@
       font-weight: 600;
     }
   }
+}
+
+@media (max-width: 640px){
+  .adm_user_photo{
+  width: 100%;
+  margin-bottom: 20px;
+}
 }
 
 </style>

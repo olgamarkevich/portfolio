@@ -1,29 +1,33 @@
 <template lang="pug">
-  .page-admin
-    headerAdm
-    navAdm
-    section.admin-content
-      .container
-        about
-        reviews
-        work
+    .page-admin
+      headerAdm
+      navAdm
+      section.admin-content
+        .container
+          router-view
+            //- about
+            //- reviews
+            //- work
 </template>
 
 <script>
+
+  import Vue from 'vue'
+
   import headerAdm from './components/headerAdm';
   import navAdm from './components/navAdm';
-  import about from './components/about';
-  import reviews from './components/reviews';
-  import work from './components/work';
+  // import about from './components/about';
+  // import reviews from './components/reviews';
+  // import work from './components/work';
 
   export default{
     name:'app',
     components:{
       headerAdm,
       navAdm,
-      about,
-      reviews,
-      work
+      // about,
+      // reviews,
+      // work
     },
     data(){
       return{}
@@ -543,18 +547,7 @@ p {
   margin-right: 0;
 }
 
-.adm_block_title .reviews-name-wr .reviews__name{
-  font-size: 16px;
-}
 
-.adm_block_title .reviews-name-wr .reviews__position{
-  font-size: 14px;
-}
-
-.adm_user_photo{
-  width: 100%;
-  margin-bottom: 20px;
-}
 
 .wrapper_w70,
 .adm-info_row{
@@ -598,24 +591,9 @@ p {
 }
 }
 
-.edit-work-container .adm-work-load{
-  width: 100%;
-  margin-right: 0;
-  min-height: auto;
+.adm-textarea{
+  font-size: 14px;
 }
-
-.edit-work-container .adm-info{
-  width: 100%;
-}
-
-.edit-work-container{
-  flex-wrap: wrap;
-}
-
-.admin-work .adm_block_text{
-  height: auto;
-}
-
 }
 
 </style>
