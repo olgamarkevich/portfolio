@@ -259,4 +259,51 @@ img {
     
 }
 
+/* Модальные окна */
+
+#modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .5s;
+    
+    .modal-content {
+        padding: auto;
+        width: 320px;
+        height: auto;
+        background: #fff;
+        padding: 60px 30px;
+        position: relative;
+    }
+    .modal-text{
+        font-weight: 600;
+        font-size: 18px;
+        color:$text-color-hover;
+        text-align: center;
+    }
+    .close-modal-btn{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 15px;
+        top:15px;
+        fill:#cecece;
+        cursor: pointer;
+    }
+}
+
+#modal.open {
+    opacity: 1;
+    z-index: 10000;
+}
+
+
 

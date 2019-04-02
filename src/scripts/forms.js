@@ -4,24 +4,17 @@ Vue.use(Vuelidate);
 import { required, email } from 'vuelidate/lib/validators'
 const axios = require('axios');
 
-Vue.component('modal', {
-  template: `
-    <div class="modal is-active">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="box"><slot></slot></div>
-      </div>
-      <button class="modal-close" @click="$emit('close')"></button>
-    </div>
-  `
-});
+const modalState = {
+  msg: null
+}
 
 new Vue({
     el:"#fb-component",
     data: {
       fbName: '',
       fbMail: '',
-      fbMsg: ''
+      fbMsg: '',
+      modalState: modalState
     },
     validations: {
       fbName: {
@@ -49,6 +42,7 @@ new Vue({
         });
       },
       submitFb() {
+        var form = this;
         axios.post('https://webdev-api.loftschool.com/sendmail', {
           name: this.fbName,
           to: "pyrkoolga@gmail.com",
@@ -57,12 +51,25 @@ new Vue({
           phone: "111"
         })
         .then(function (response) {
-          alert('Сообщение отправлено!');
-          
+          form.modalState.msg = 'Сообщение отправлено!';
+          // form.fbName = '';
+          // form.fbMail = '';
+          // form.fbMsg = ''
+
         })
         .catch(function (error) {
-          alert('Не удалось отправить сообщение!');
+          form.modalState.msg = 'Не удалось отправить сообщение!';
         });
       }
     }
+});
+
+new Vue({
+  el:"#modal",
+  data: modalState,
+  methods: {
+    close() {
+      this.msg = null;
+    }
+  }
 });

@@ -223,6 +223,13 @@ html(lang="en")
                 stop(offset='100%', stop-color='#9100ed')
 
     #mob-menu-component
+
+    #modal(v-bind:class="{open: msg}")
+        .modal-content
+            .modal-close(@click="close")
+                +icon('close', 'close-modal-btn')
+            .modal-text Соощение отправлено
+
     include ./templates/entry.pug
     
                                         
