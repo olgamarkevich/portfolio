@@ -156,14 +156,14 @@ html(lang="en")
                                             label.form-label Введите ваше имя
                                             .line-wr
                                                 +icon('user', 'line-icon')
-                                                input.form-input(v-model="$v.fbName.$model" :class="status($v.fbName)" placeholder="Ковальчук Дмитрий")
+                                                input.form-input(v-model="$v.fbName.$model" :class="status($v.fbName)" placeholder="Ковальчук Дмитрий" type="name" name="name")
                                                 span(v-if="$v.fbName.$error").error-msg Заполните поле
                                     .flex-col
                                         .wi-line
                                             label.form-label Введите ваш email
                                             .line-wr
                                                 +icon('envelope', 'line-icon')
-                                                input.form-input(v-model="$v.fbMail.$model" :class="status($v.fbMail)" placeholder="loftschool@study.com")
+                                                input.form-input(v-model="$v.fbMail.$model" :class="status($v.fbMail)" placeholder="loftschool@study.com" type="email" name="email")
                                                 span(v-if="!$v.fbMail.required && $v.fbMail.$dirty").error-msg Заполните поле
                                                 span(v-if="!$v.fbMail.email && $v.fbMail.$dirty").error-msg Введите корректный email
                                 .wi-line
@@ -171,9 +171,9 @@ html(lang="en")
                                                 label.form-label Сообщение к письму
                                                 .line-wr
                                                     +icon('message', 'line-icon')
-                                                    textarea.form-textarea(v-model="$v.fbMsg.$model" :class="status($v.fbMsg)" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+                                                    textarea.form-textarea(v-model="$v.fbMsg.$model" :class="status($v.fbMsg)" type="text" name="next" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
                                                     span(v-if="$v.fbMsg.$error").error-msg Заполните поле
-                                button.wi-btn(:disabled="!formIsValid($v)" @click.prevent="submitFb") Отправить
+                                button.wi-btn(:disabled="!formIsValid($v)" @click.prevent="submitFb($v)") Отправить
                             
                         
             footer.footer

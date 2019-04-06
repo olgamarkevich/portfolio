@@ -41,7 +41,7 @@ new Vue({
           return v[field].$dirty && !v[field].$error;
         });
       },
-      submitFb() {
+      submitFb(v) {
         var form = this;
         axios.post('https://webdev-api.loftschool.com/sendmail', {
           name: this.fbName,
@@ -52,10 +52,10 @@ new Vue({
         })
         .then(function (response) {
           form.modalState.msg = 'Сообщение отправлено!';
-          // form.fbName = '';
-          // form.fbMail = '';
-          // form.fbMsg = ''
-
+          form.fbName = '';
+          form.fbMail = '';
+          form.fbMsg = '';
+          v.$reset(); 
         })
         .catch(function (error) {
           form.modalState.msg = 'Не удалось отправить сообщение!';
