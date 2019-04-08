@@ -54,6 +54,12 @@ margin-right: 48px;
     &::-moz-placeholder          {color:$text-color;}/* Firefox 19+ */
     &:-moz-placeholder           {color:$text-color;;}/* Firefox 18- */
     &:-ms-input-placeholder      {color:$text-color;;}
+    &:focus{
+        border-bottom: 1px solid $text-color-hover;
+        + .line-icon{
+            fill:$text-color-hover;
+        }
+    }
 }
 
 .line-wr{
@@ -63,6 +69,7 @@ margin-right: 48px;
         height: 28px;
         fill:#cecece;
         position:absolute;
+        left: 0;
     }
 
 }

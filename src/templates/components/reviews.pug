@@ -3,8 +3,8 @@ script(type="text/x-template")#reviews__list
         .flex-reviews
             .section-title Что обо мне говорят
             .reviews__slider-controls
-                .prev-btn(@click="previous")
-                .next-btn(@click="next")
+                button.prev-btn(@click="previous")
+                button.next-btn(@click="next")
         Flickity(
             :options="flickityOptions"
             ref="flickity"
