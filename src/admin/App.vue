@@ -293,7 +293,7 @@
 .adm-row{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows:1fr 1fr;
+  grid-template-rows:1fr;
   grid-gap:30px;
   &.row3{
     grid-template-columns: 1fr 1fr 1fr;
@@ -315,11 +315,16 @@
   display: flex;
   text-decoration: none;
   align-items: center;
+  background: none;
+   outline: none;
   .btn-add-span{
     color:#383bcf;
     font-weight: 600;
     font-size:16px;
     margin-left:12px;
+  }
+  :focus{
+    outline: none
   }
 }
 
@@ -458,9 +463,6 @@ p {
 @media (max-width: 991px){
     .adm-row.row3 {
     grid-template-columns: 1fr 1fr;
-}
-.new_add_skills{
-  display: none;
 }
 
 .wrapper_w70{
