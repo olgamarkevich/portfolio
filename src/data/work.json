@@ -30,5 +30,37 @@
         "photo": "04.png",
         "link": "http://doctorcomp.io.swtest.ru/",
         "desc": "Компьютерный ремонт и услуги"
-      }
+      },
+      {
+        "id": 5,
+        "title": "5 Сайт агентства недвижимости",
+        "skills": "Html, Css, JavaScript",
+        "photo": "01.png",
+        "link": "http://investerra.fi",
+        "desc": "Investerra - финская компания, работающая на рынке недвижимости Финляндии."
+      },
+      {
+        "id": 6,
+        "title": "6 iQFreeze",
+        "skills": "Html, Css, JavaScript",
+        "photo": "02.png",
+        "link": "https://olgapyrko.com/iq/",
+        "desc": "iQFreeze* – современный подход к контролю перевозки скоропортящегося груза и управлению парком рефрижераторов"
+      },
+      {
+        "id": 7,
+        "title": "7 Куб три",
+        "skills": "Html, Css, JavaScript",
+        "photo": "03.png",
+        "link": "https://olgapyrko.com/kub",
+        "desc": "Куб три - лидер рынка по внедрению нестандартных решений на платформе SugarCRM/SuiteCRM"
+      },
+      {
+          "id": 8,
+          "title": "8 Доктор КОМП",
+          "skills": "Html, Css, JavaScript",
+          "photo": "04.png",
+          "link": "http://doctorcomp.io.swtest.ru/",
+          "desc": "Компьютерный ремонт и услуги"
+        }
   ]
