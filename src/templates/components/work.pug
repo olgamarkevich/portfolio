@@ -13,14 +13,14 @@ script(type="text/x-template")#slider-container
         )
 
 script(type="text/x-template")#slider-display
-    .portfolio-slider(:data-slide="currentIndex + 1")
+    .portfolio-slider(:data-slide="currentIndex + 1" ref="display")
         .portfolio-date_number {{currentIndex+1}}
         img(:src="currentWork.photo")
         btns(
           @slide="direction => $emit('slide', direction)"
         )
         thumbs(
-          :works="reversedWorks"
+          :works="works"
           :currentWork="currentWork"
           @slideTo="index => $emit('slideTo', index)"
         )
@@ -28,15 +28,16 @@ script(type="text/x-template")#slider-display
 
 script(type="text/x-template")#slider-btns
     .portfolio-dots
-        a(href="#" @click.prevent="$emit('slide', 'next')").btn-up
-        a(href="#" @click.prevent="$emit('slide', 'prev')").btn-down
+        a(href="#" @click.prevent="$emit('slide', 'prev')").btn-up
+        a(href="#" @click.prevent="$emit('slide', 'next')").btn-down
 
 script(type="text/x-template")#slider-thumbs
-    .portfolio-nav
+    .portfolio-nav(ref="thumbs")
         .portfolio-nav__item(
             v-for="(work, index) in works" :key="work.id"
             :class="{active: currentWork.id === work.id }"
             @click="$emit('slideTo', index)"
+            ref="thumb"
         )
             img(:src="work.photo" alt="")
 

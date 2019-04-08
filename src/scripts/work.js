@@ -5,6 +5,9 @@ const thumbs = {
   props: {
     works: Array,
     currentWork: Object
+  },
+  created() {
+    this.$root.thumbsRefs = this.$refs;
   }
 };
 
@@ -23,12 +26,7 @@ const display = {
     currentWork: Object,
     currentIndex: Number
   },
-  computed: {
-    reversedWorks() {
-      const works = [...this.works];
-      return works.reverse();
-    }
-  }
+  computed: {}
 };
 
 const tags = {
@@ -66,7 +64,6 @@ new Vue({
       works: [],
       currentIndex: 0
     };
-    
   },
   computed: {
     currentWork() {
@@ -76,6 +73,7 @@ new Vue({
   watch: {
     currentIndex(value) {
       this.makeInfiniteLoopForCurIndex(value);
+      this.fixThumbs();
     }
   },
   methods: {
@@ -103,15 +101,28 @@ new Vue({
       }
     },
     handleSlideTo(index) {
-      var reversedIndexes = [];
-      for (var i=this.works.length-1; i>=0; i--) {
-        reversedIndexes.push(i);
+      this.currentIndex = index;
+      this.fixThumbs();
+    },
+    fixThumbs() {
+
+      const thumbHeight = this.thumbsRefs.thumb[0].offsetHeight,
+            thumbsHeight = this.thumbsRefs.thumbs.offsetHeight,
+            thumbsActive = Math.round(thumbsHeight / thumbHeight),
+            thumbsTotal = this.thumbsRefs.thumb.length;
+
+      var offset = 0;
+
+      if (this.currentIndex >= thumbsActive) {
+        offset = -(this.currentIndex + 1 - thumbsActive) * thumbHeight;
       }
-      this.currentIndex = reversedIndexes[index];
+
+      this.thumbsRefs.thumb[0].style.marginTop = offset + 'px';
     }
   },
   created() {
     const data = require("../data/work.json");
     this.works = this.makeArrWithRequiredImages(data);
+    window.addEventListener('resize', this.fixThumbs);
   }
 });
