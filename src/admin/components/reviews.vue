@@ -2,46 +2,58 @@
   .admin-reviews
     .admin-title_container
       .admin-title Блок «Отзывы»
-    .adm_block.adm-top
-      .adm_block_title
-        .adm_block_title_span Новый отзыв
-      .adm_block_wrapper.wrapper_w70
-        .adm_user_photo
-          button.user_photo
-          button.btn Добавить фото
-        .adm-info
-          .adm-info_row
-            .adm-info_line
-              .adm-info_label Имя автора
-              input(placeholder="Ковальчук Дмитрий").adm_block_input
-            .adm-info_line
-              .adm-info_label Титул автора
-              input(placeholder="Основатель LoftSchool").adm_block_input
-          .adm-info_line
-            .adm-info_label Отзыв
-            textarea.adm-textarea
-          .adm-info-btns
-            button.btn Отмена
-            button.btn_s Сохранить
     
+    reviewsAdd(v-if='showAddingForm' @hideAddingForm="hideAddingForm")
     .adm-row.row3
-      button.adm_block.add_block
+      button.adm_block.add_block(@click="showAddingForm = true" v-if="showAddingForm === false" )
         .add_block_plus +
         .add_block_span Добавить<br> отзыв
-      reviewsItem
-      reviewsItem
-      reviewsItem
+
+      reviewsItem(v-for="review in reviews"
+        :key="review.id"
+        :review="review"
+        
+        )
       
         
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
   import reviewsItem from './reviewsItem';
+  import reviewsAdd from './reviewsAdd';
 
   export default{
     components:{
-      reviewsItem
+      reviewsItem,
+      reviewsAdd
+    },
+    props:{
+    review: Array
+    },
+    data(){
+      return{
+        showAddingForm: false
+      }
+    },
+    computed: {
+    ...mapState('reviews', {
+      reviews: state => state.reviews
+    })
+    },
+    methods: {
+      hideAddingForm: function() {
+        this.showAddingForm = false;
+      },
+      ...mapActions('reviews', ['fetchReviews']),
+    },
+    async created() {
+    try {
+      await this.fetchReviews(); 
+    } catch (error) {
+      alert('Произошла ошибка при загрузке отзывов') 
     }
+  }
   }
 </script>
 

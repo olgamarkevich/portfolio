@@ -4,8 +4,8 @@
       // input(value="Workflow").adm_block_input
       .adm_block_input {{category.category}}
       .adm_block_title_btns
-        button.btn-tick
-        button.btn-close
+        button.btn-tick 
+        button.btn-close(@click="removeExistingCategory")
     ul.adm_skills_list
       skills-item(
           v-for="skill in skills"
@@ -89,13 +89,21 @@ export default{
   },
   methods: {
     ...mapActions('skills', ['addSkill']),
+    ...mapActions('categories', ['deleteCategory']),
     async addNewSkill() {
       try {
         await this.addSkill(this.skill);
       } catch (error) {
         // error 
       }
-    }
+    },
+    async removeExistingCategory() {
+      try {
+        await this.deleteCategory(this.category.id);
+      } catch (error) {
+        // error 
+      }
+    },
   }
 }
 </script>
