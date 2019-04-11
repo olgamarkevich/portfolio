@@ -51,7 +51,7 @@ export default{
   },
 
   methods: {
-    ...mapActions('reviews', ['addReview']),
+    ...mapActions('reviews', ['addReview', 'createReview']),
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
       this.review.photo = file;
@@ -78,6 +78,19 @@ export default{
 </script>
 
 <style lang="pcss">
+
+.reviews__avatar{
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  img{
+    width: 100%;
+    border-radius:50%;
+    width: 60px;
+  height: 60px;
+  }
+}
+
 .reviews__form-pic {
   width: 200px;
   height: 200px;

@@ -12,14 +12,13 @@
       reviewsItem(v-for="review in reviews"
         :key="review.id"
         :review="review"
-        
         )
       
         
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+  import { mapActions, mapState } from "vuex";
   import reviewsItem from './reviewsItem';
   import reviewsAdd from './reviewsAdd';
 

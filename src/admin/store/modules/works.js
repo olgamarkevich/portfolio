@@ -1,34 +1,35 @@
 export default{
     namespaced: true,
     state:{
-      reviews:[]
+      works:[]
     },
     mutations:{
-          SET_REVIEWS: (state, reviews) => {
-            state.reviews = reviews;
+          SET_WORKS: (state, works) => {
+            state.works = works;
           },
-          ADD_REVIEWS: (state, newReview) => {
-            state.reviews.push(newReview);
+          ADD_WORKS: (state, newReview) => {
+            state.works.push(newReview);
           },
-          REMOVE_REVIEWS: (state, deletedSkillId) => {
+          REMOVE_WORKS: (state, deletedSkillId) => {
             state.reviews = state.reviews.filter(review => review.id !== deletedSkillId);
           },
-          EDIT_REVIEWS: (state, editedSkill) => {
+          EDIT_WORKS: (state, editedSkill) => {
             state.reviews = state.skills.map(review =>
               review.id === editedSkill.id ? editedSkill : review
             );
           }
     },
     actions:{
-        async addReview({ commit }, review) {
+        async addWork({ commit }, work) {
             try {
               const formData = new FormData();
-              formData.append('author', review.author);
-              formData.append('photo', review.photo);
-              formData.append('text', review.text);
-              formData.append('occ', review.occ);
-              const response = await this.$axios.post("/reviews", formData);
-              commit("ADD_REVIEWS", response.data);
+              formData.append('title', work.title);
+              formData.append('photo', work.photo);
+              formData.append('techs', work.techs);
+              formData.append('link', work.link);
+              formData.append('description', work.description);
+              const response = await this.$axios.post("/works", formData);
+              commit("ADD_WORKS", response.data);
               return response;
             } catch (error) {
               // error handling
@@ -37,7 +38,7 @@ export default{
           async fetchReviews({ commit }, review) {
             try {
               const response = await this.$axios.get("/reviews/113", review);
-              commit("SET_REVIEWS", response.data);
+              commit("SET_WORKS", response.data);
               return response;
             } catch (error) {
               // error handling
@@ -46,7 +47,7 @@ export default{
           async removeReviews({ commit }, reviewId) {
             try {
               const response = await this.$axios.delete(`/reviews/${reviewId}`);
-              commit("REMOVE_REVIEWS", reviewId);
+              commit("REMOVE_WORKS", reviewId);
               return response;
             } catch (error) {
               generateStdError(error);
@@ -55,7 +56,7 @@ export default{
           async editSkill({ commit }, review) {
             try {
               const response = await this.$axios.post(`/reviews/${skill.id}`, review);
-              commit('EDIT_REVIEWS', response.data.review);
+              commit('EDIT_WORKS', response.data.review);
               return response;
             } catch (error) {
               generateStdError(error);

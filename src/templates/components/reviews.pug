@@ -15,7 +15,7 @@ script(type="text/x-template")#reviews__list
                         p {{review.text}}
                     .reviews-name-wr
                         .reviews__avatar
-                            img(:src="review.photo" alt="reviews-person").avatar-img
+                            img(:src="`https://webdev-api.loftschool.com/${review.photo}`" alt="reviews-person").avatar-img
                         .reviews__person
-                            .reviews__name {{review.name}}
-                            .reviews__position {{review.position}}
+                            .reviews__name {{review.author}}
+                            .reviews__position {{review.occ}}
