@@ -8,8 +8,9 @@ script(type="text/x-template")#reviews__list
         Flickity(
             :options="flickityOptions"
             ref="flickity"
+            v-if="typeof(reviews) !== 'undefined' && reviews.length > 0"
         ).reviews__slider
-            .carousel-cell(v-for="review in reviews") 
+            .carousel-cell(v-for="review in reviews" :key="review.id") 
                 .reviews__item
                     .reviews__text
                         p {{review.text}}

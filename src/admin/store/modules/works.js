@@ -7,15 +7,15 @@ export default{
           SET_WORKS: (state, works) => {
             state.works = works;
           },
-          ADD_WORKS: (state, newReview) => {
-            state.works.push(newReview);
+          ADD_WORK: (state, newWork) => {
+            state.works.push(newWork);
           },
-          REMOVE_WORKS: (state, deletedSkillId) => {
-            state.reviews = state.reviews.filter(review => review.id !== deletedSkillId);
+          REMOVE_WORK: (state, deletedWorkId) => {
+            state.works = state.works.filter(works => works.id !== deletedWorkId);
           },
-          EDIT_WORKS: (state, editedSkill) => {
-            state.reviews = state.skills.map(review =>
-              review.id === editedSkill.id ? editedSkill : review
+          EDIT_WORK: (state, editedWork) => {
+            state.works = state.works.map(work =>
+              work.id === editedWork.id ? editedWork : works
             );
           }
     },
@@ -29,34 +29,34 @@ export default{
               formData.append('link', work.link);
               formData.append('description', work.description);
               const response = await this.$axios.post("/works", formData);
-              commit("ADD_WORKS", response.data);
+              commit("ADD_WORK", response.data);
               return response;
             } catch (error) {
-              // error handling
+              generateStdError(error);
             }
           },      
-          async fetchReviews({ commit }, review) {
+          async fetchWorks({ commit }) {
             try {
-              const response = await this.$axios.get("/reviews/113", review);
+              const response = await this.$axios.get("/works/113");
               commit("SET_WORKS", response.data);
-              return response;
-            } catch (error) {
-              // error handling
-            }
-          },
-          async removeReviews({ commit }, reviewId) {
-            try {
-              const response = await this.$axios.delete(`/reviews/${reviewId}`);
-              commit("REMOVE_WORKS", reviewId);
               return response;
             } catch (error) {
               generateStdError(error);
             }
           },
-          async editSkill({ commit }, review) {
+          async removeWork({ commit }, workId) {
             try {
-              const response = await this.$axios.post(`/reviews/${skill.id}`, review);
-              commit('EDIT_WORKS', response.data.review);
+              const response = await this.$axios.delete(`/works/${workId}`);
+              commit("REMOVE_WORK", workId);
+              return response;
+            } catch (error) {
+              generateStdError(error);
+            }
+          },
+          async editWork({ commit }, work) {
+            try {
+              const response = await this.$axios.post(`/works/${work.id}`, work);
+              commit('EDIT_WORK', response.data.work);
               return response;
             } catch (error) {
               generateStdError(error);

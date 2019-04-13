@@ -47,12 +47,12 @@
       ...mapActions('reviews', ['fetchReviews']),
     },
     async created() {
-    try {
-      await this.fetchReviews(); 
-    } catch (error) {
-      alert('Произошла ошибка при загрузке отзывов') 
+      try {
+        await this.fetchReviews(); 
+      } catch (error) {
+        alert('Произошла ошибка при загрузке отзывов') 
+      }
     }
-  }
   }
 </script>
 

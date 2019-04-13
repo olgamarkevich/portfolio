@@ -2,7 +2,6 @@ import Vue from 'vue';
 import axios from 'axios';
 import Flickity from 'vue-flickity';
 
-
 new Vue({
     el:"#reviews-component",
     template:"#reviews__list",
@@ -18,7 +17,6 @@ new Vue({
           initialIndex: 0,
           prevNextButtons: false,
           pageDots: false,
-          wrapAround: true,
           cellAlign: 'left'
         }
       }
@@ -45,10 +43,9 @@ new Vue({
       axios.get('https://webdev-api.loftschool.com/reviews/113')
       .then(function (response) {
         component.reviews = response.data;
-        component.mergeData();
       })
       .catch(function (error) {
         console.log(error);
       });
-      }
+    }
   });

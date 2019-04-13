@@ -42,8 +42,14 @@
         this.showAddingForm = false;
       },
       ...mapActions('works', ['fetchWorks']),
+    },
+    async created() {
+      try {
+        await this.fetchWorks(); 
+      } catch (error) {
+        alert('Произошла ошибка при загрузке отзывов') 
+      }
     }
-    
   }
 </script>
 
