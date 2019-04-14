@@ -44,34 +44,17 @@ new Vue({
     },
     methods: {
       mergeData() {
-        var component = this;
-        if (component.categories.length && component.skills.length) {
-          component.categories.forEach(function(category) {
-            category.skills = component.skills.filter(function(skill) {
-              return skill.category == category.id;
-            });
-          });
-        }
+        this.categories.forEach(category => {
+          category.skills = this.skills.filter(skill => skill.category == category.id)
+        })
       }
     },
-    created() {
-      var component = this;
-      axios.get('https://webdev-api.loftschool.com/skills/113')
-      .then(function (response) {
-        component.skills = response.data;
-        component.mergeData();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      axios.get('https://webdev-api.loftschool.com/categories/113')
-      .then(function (response) {
-        component.categories = response.data;
-        component.mergeData();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    async created() {
+      const skillsRes = await axios.get('https://webdev-api.loftschool.com/skills/113')
+      this.skills = skillsRes.data;
+      const catRes = await axios.get('https://webdev-api.loftschool.com/categories/113')
+      this.categories = catRes.data;
+      this.mergeData()
       }
 
 })

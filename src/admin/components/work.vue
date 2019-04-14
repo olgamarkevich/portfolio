@@ -46,8 +46,10 @@
     async created() {
       try {
         await this.fetchWorks(); 
-      } catch (error) {
-        alert('Произошла ошибка при загрузке отзывов') 
+      }
+      
+      catch (error) {
+        alert('Произошла ошибка при загрузке работ') 
       }
     }
   }

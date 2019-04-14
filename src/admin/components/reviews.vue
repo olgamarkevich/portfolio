@@ -43,6 +43,7 @@
     methods: {
       hideAddingForm: function() {
         this.showAddingForm = false;
+        console.log('closed');
       },
       ...mapActions('reviews', ['fetchReviews']),
     },

@@ -15,7 +15,7 @@ export default{
           },
           EDIT_WORK: (state, editedWork) => {
             state.works = state.works.map(work =>
-              work.id === editedWork.id ? editedWork : works
+              work.id === editedWork.id ? editedWork : work
             );
           }
     },
@@ -55,7 +55,15 @@ export default{
           },
           async editWork({ commit }, work) {
             try {
-              const response = await this.$axios.post(`/works/${work.id}`, work);
+              const formData = new FormData();
+              formData.append('title', work.title);
+              formData.append('techs', work.techs);
+              formData.append('link', work.link);
+              formData.append('description', work.description);
+              if (typeof(work.photo) == 'object') {
+                formData.append('photo', work.photo);
+              }
+              const response = await this.$axios.post(`/works/${work.id}`, formData);
               commit('EDIT_WORK', response.data.work);
               return response;
             } catch (error) {

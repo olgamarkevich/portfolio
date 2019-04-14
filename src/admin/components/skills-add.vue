@@ -25,9 +25,14 @@ import {mapActions} from "vuex"
     },
     methods: {
       ...mapActions('categories', ['addNewSkillsGroup']),
+      ...mapActions('tooltips', ['showTooltip']),
       async addSkillGroup(){
         try{
           await this.addNewSkillsGroup(this.skillTitle);
+          this.showTooltip({
+          type:"success",
+          text: "Категория добавлена"
+        })
           this.skillTitle=""
         } catch (error){
           alert(error.message)

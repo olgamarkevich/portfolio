@@ -13,9 +13,9 @@ export default{
           REMOVE_REVIEWS: (state, deletedSkillId) => {
             state.reviews = state.reviews.filter(review => review.id !== deletedSkillId);
           },
-          EDIT_REVIEWS: (state, editedSkill) => {
-            state.reviews = state.skills.map(review =>
-              review.id === editedSkill.id ? editedSkill : review
+          EDIT_REVIEWS: (state, editedReview) => {
+            state.reviews = state.reviews.map(review =>
+              review.id === editedReview.id ? editedReview : review
             );
           }
     },
@@ -52,9 +52,16 @@ export default{
               generateStdError(error);
             }
           },
-          async editSkill({ commit }, review) {
+          async editReview({ commit }, review) {
             try {
-              const response = await this.$axios.post(`/reviews/${skill.id}`, review);
+              const formData = new FormData();
+              formData.append('author', review.author);
+              formData.append('text', review.text);
+              formData.append('occ', review.occ);
+              if (typeof(review.photo) == 'object') {
+                formData.append('photo', review.photo);
+              }
+              const response = await this.$axios.post(`/reviews/${review.id}`, formData);
               commit('EDIT_REVIEWS', response.data.review);
               return response;
             } catch (error) {

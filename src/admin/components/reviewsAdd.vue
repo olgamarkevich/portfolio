@@ -52,6 +52,7 @@ export default{
 
   methods: {
     ...mapActions('reviews', ['addReview', 'createReview']),
+    ...mapActions('tooltips', ['showTooltip']),
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
       this.review.photo = file;
@@ -66,10 +67,19 @@ export default{
       }
     },
     async addNewReview() {
+      var cmp = this;
       try {
-        await this.addReview(this.review);
+        await this.addReview(this.review).then(res => {
+          if (res.status === 201) {
+            cmp.$emit('hideAddingForm');
+            this.showTooltip({
+            type:"success",
+            text: "Отзыв добавлен"
+          })
+          }
+        });
       } catch (error) {
-        // error 
+        
       }
     },
     

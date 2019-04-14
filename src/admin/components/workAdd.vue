@@ -64,6 +64,7 @@ export default{
 
   methods: {
     ...mapActions('works', ['addWork']),
+    ...mapActions('tooltips', ['showTooltip']),
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
       this.work.photo = file;
@@ -78,9 +79,20 @@ export default{
       }
     },
     async addNewWork() {
+      var cmp = this;
       try {
-        await this.addWork(this.work);
-      } catch (error) {
+        // await this.addWork(this.work);
+        await this.addWork(this.work).then(res => {
+          if (res.status === 201) {
+            cmp.$emit('hideAddingForm');
+            this.showTooltip({
+          type:"success",
+          text: "Работа добавлена"
+        })
+          }
+        });
+      }
+      catch (error) {
         // error 
       }
     },
@@ -95,4 +107,31 @@ export default{
 }
 </script>
 
+<style>
+.edit-work-container .reviews__form-pic,
+.edit-work-container .reviews__form-avatar-empty{
+  border-radius: 0;
+  width: 100%;
+}
 
+.edit-work-container .reviews__form-avatar-upload{
+  width: 70%;
+}
+
+.edit-work-container .reviews__form-avatar-empty{
+  display: none;
+}
+
+.edit-work-container .reviews__form-pic{
+height: auto;
+}
+
+.edit-work-container .reviews__form-avatar-empty.filled{
+display: block;
+}
+
+.edit-work-container  .btn_s{
+  width: auto;
+  display: inline-block
+}
+</style>

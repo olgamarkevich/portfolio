@@ -12,7 +12,12 @@ export default{
         },
         ADD_CATEGORY: (state, newCategory) => {
             state.categories.push(newCategory);
-        }
+        },
+        EDIT_CATEGORY: (state, editedCategory) => {
+            state.categories = state.categories.map(category =>
+                category.id === editedCategory.id ? editedCategory : category
+            );
+          }
     },
     actions:{
         async addNewSkillsGroup({commit}, groupTitle){
@@ -48,6 +53,19 @@ export default{
             catch (error) {
                 generateStdError(error);
             }
-        }
+        },
+        async editCategory({ commit }, category) {
+            var category = {
+                ...category,
+                title: category.category
+            }
+            try {
+              const response = await this.$axios.post(`/categories/${category.id}`, category);
+              commit('EDIT_CATEGORY', response.data.category);
+              return response;
+            } catch (error) {
+              generateStdError(error);
+            }
+          },
     }
 }

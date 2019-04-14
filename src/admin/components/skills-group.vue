@@ -1,11 +1,16 @@
 <template lang="pug">
   .adm_block
-    .adm_block_title
-      // input(value="Workflow").adm_block_input
+    .adm_block_title.no_edit(v-if="editmode === false")
       .adm_block_input {{category.category}}
       .adm_block_title_btns
-        button.btn-tick 
+        button.btn-edit(@click="editmode = true")
+    
+    .adm_block_title.edit(v-else)
+      input.adm_block_input(v-model="editedCategory.category") 
+      .adm_block_title_btns
+        button.btn-tick(@click="saveCategory") 
         button.btn-close(@click="removeExistingCategory")
+
     ul.adm_skills_list
       skills-item(
           v-for="skill in skills"
@@ -19,50 +24,6 @@
         span.input_percent %
       button.btn-add(@click="addNewSkill") +
 
-      // .adm_block
-      //   .adm_block_title
-      //     input(value="Frontend").adm_block_input
-      //     .adm_block_title_btns
-      //       button.btn-edit
-      //   ul.adm_skills_list
-      //     li.adm_skills_item
-      //       input(value="Git").adm_block_input
-      //       .persent-skills
-      //         input(value="100").adm_block_input
-      //         span.input_percent %
-      //       .adm_block_title_btns
-      //         button.btn-edit
-      //         button.btn-del
-      //     li.adm_skills_item
-      //       input(value="Git").adm_block_input
-      //       .persent-skills
-      //         input(value="100").adm_block_input
-      //         span.input_percent %
-      //       .adm_block_title_btns
-      //         button.btn-edit
-      //         button.btn-del
-      //     li.adm_skills_item
-      //       input(value="Git").adm_block_input
-      //       .persent-skills
-      //         input(value="100").adm_block_input
-      //         span.input_percent %
-      //       .adm_block_title_btns
-      //         button.btn-tick
-      //         button.btn-close
-      //     li.adm_skills_item
-      //       input(value="Git").adm_block_input
-      //       .persent-skills
-      //         input(value="100").adm_block_input
-      //         span.input_percent %
-      //       .adm_block_title_btns
-      //         button.btn-edit
-      //         button.btn-del
-      //   .adm_add_skill
-      //     input(placeholder="Новый навык").adm_block_input.input_new_slills
-      //     .persent-skills
-      //       input(value="100").adm_block_input
-      //       span.input_percent %
-      //     button.btn-add +
 </template>
 
 
@@ -76,11 +37,13 @@ export default{
     },
   data(){
     return{
+      editmode: false,
       skill:{
         category: this.category.id,
         title:"",
         percent:""
-      }
+      },
+      editedCategory:{...this.category}
     }
   },
   props:{
@@ -89,21 +52,50 @@ export default{
   },
   methods: {
     ...mapActions('skills', ['addSkill']),
-    ...mapActions('categories', ['deleteCategory']),
+    ...mapActions('categories', ['deleteCategory', 'editCategory']),
+    ...mapActions('tooltips', ['showTooltip']),
     async addNewSkill() {
       try {
         await this.addSkill(this.skill);
+        this.showTooltip({
+          type:"success",
+          text: "Скилл добавлен"
+        })
       } catch (error) {
-        // error 
+        this.showTooltip({
+          type:"error",
+          text: error.message
+        })
       }
     },
     async removeExistingCategory() {
       try {
         await this.deleteCategory(this.category.id);
+        this.showTooltip({
+          type:"success",
+          text: "Категория удалена"
+        })
       } catch (error) {
-        // error 
+        this.showTooltip({
+          type:"error",
+          text: "Категорию не удалось удалить"
+        })
       }
     },
+    async saveCategory() {
+      try {
+        await this.editCategory(this.editedCategory);
+        this.editmode = false;
+      } catch (error) {
+        
+      }
+    }
   }
 }
 </script>
+
+<style lang="pcss">
+ .no_edit .adm_block_input{
+  border-bottom: 1px solid transparent;
+}
+</style>
