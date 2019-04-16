@@ -16,7 +16,9 @@
 <script>
 
   import Vue from 'vue'
-  
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required, email } from 'vuelidate/lib/validators'
   import headerAdm from './components/headerAdm';
   import navAdm from './components/navAdm';
   import tooltip from './components/tooltip';
@@ -617,6 +619,10 @@ p {
 .adm-textarea{
   font-size: 14px;
 }
+}
+
+.error.dirty {
+  box-shadow: 0 0 0 0.2rem rgba(225,83,97,.5);
 }
 
 </style>

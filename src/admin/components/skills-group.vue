@@ -18,9 +18,9 @@
           :skill="skill"
     )
     .adm_add_skill
-      input(placeholder="Новый навык" v-model="skill.title").adm_block_input.input_new_slills
+      input(placeholder="Новый навык" v-model="$v.skill.title.$model" :class="status($v.skill.title)").adm_block_input.input_new_slills
       .persent-skills
-        input(value="100"  v-model="skill.percent").adm_block_input
+        input(value="100"  v-model="$v.skill.percent.$model" :class="status($v.skill.percent)").adm_block_input
         span.input_percent %
       button.btn-add(@click="addNewSkill") +
 
@@ -28,8 +28,14 @@
 
 
 <script>
-  import { mapActions } from "vuex";
+
+import { mapActions } from "vuex";
 import skillsItem from './skills-item';
+
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
+import { required, integer, minValue, maxValue } from 'vuelidate/lib/validators';
 
 export default{
    components:{
@@ -50,22 +56,39 @@ export default{
     category: Object,
     skills: Array
   },
+  validations: {
+    skill: {
+      title: {
+        required
+      },
+      percent: {
+        required,
+        integer,
+        minValue: minValue(1),
+        maxValue: maxValue(100)
+      }
+    }
+  },
   methods: {
     ...mapActions('skills', ['addSkill']),
     ...mapActions('categories', ['deleteCategory', 'editCategory']),
     ...mapActions('tooltips', ['showTooltip']),
     async addNewSkill() {
-      try {
-        await this.addSkill(this.skill);
-        this.showTooltip({
-          type:"success",
-          text: "Скилл добавлен"
-        })
-      } catch (error) {
-        this.showTooltip({
-          type:"error",
-          text: error.message
-        })
+      this.$v.$touch();
+      if(!this.$v.$invalid) {
+        try {
+          await this.addSkill(this.skill);
+          this.showTooltip({
+            type:"success",
+            text: "Скилл добавлен"
+          });
+           this.$v.$reset();
+        } catch (error) {
+          this.showTooltip({
+            type:"error",
+            text: error.message
+          })
+        }
       }
     },
     async removeExistingCategory() {
@@ -89,7 +112,13 @@ export default{
       } catch (error) {
         
       }
-    }
+    },
+    status(validation) {
+        return {
+          error: validation.$error,
+          dirty: validation.$dirty
+        }
+      }
   }
 }
 </script>

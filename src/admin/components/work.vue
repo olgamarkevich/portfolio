@@ -47,7 +47,6 @@
       try {
         await this.fetchWorks(); 
       }
-      
       catch (error) {
         alert('Произошла ошибка при загрузке работ') 
       }

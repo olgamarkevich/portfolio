@@ -28,4 +28,13 @@ export default {
       background: #b13333;
     }
   }
+
+.tooltip_close{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  background: svg-load('edit.svg', fill=#383bcf) center right no-repeat / contain;
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
   .adm_block.adm-top
       .adm_block_title
-        .adm_block_title_span Редактирование работы
+        .adm_block_title_span Создание работы
       .adm_block_wrapper.edit-work-container
         .adm-work-load
           p.load_label Перетащите или загрузите для загрузки изображения
@@ -19,18 +19,19 @@
         .adm-info
           .adm-info_line
             .adm-info_label Название
-            input(placeholder="Ковальчук Дмитрий" v-model="work.title").adm_block_input
+            input(placeholder="Ковальчук Дмитрий" v-model="$v.work.title.$model" :class="status($v.work.title)").adm_block_input
           .adm-info_line
             .adm-info_label Ссылка
-            input(placeholder="Основатель LoftSchool" v-model="work.link").adm_block_input
+            input(placeholder="Основатель LoftSchool" v-model="$v.work.link.$model" :class="status($v.work.link)").adm_block_input
           .adm-info_line
             .adm-info_label Описание
-            textarea.adm-textarea(v-model="work.description")
+            textarea.adm-textarea(v-model="$v.work.description.$model" :class="status($v.work.description)")
           .adm-info_line
             .adm-info_label Добавление тэга
             input(
-              v-model="work.techs"
+              v-model="$v.work.techs.$model"
               @keyup="getTags"
+              :class="status($v.work.techs)"
             ).adm_block_input
             .adm-tags
               .adm-tags_item(
@@ -47,6 +48,12 @@
 
 <script>
 import { mapActions } from "vuex";
+
+  import Vue from 'vue';
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required} from 'vuelidate/lib/validators';
+
 export default{
   data(){
     return {
@@ -60,6 +67,25 @@ export default{
         tags: []
       }
     };
+  },
+  validations: {
+    work: {
+      title: {
+        required
+      },
+      link: {
+        required
+      },
+      techs: {
+        required
+      },
+      description: {
+        required
+      },
+      photo: {
+        required
+      },
+    }
   },
 
   methods: {
@@ -80,6 +106,8 @@ export default{
     },
     async addNewWork() {
       var cmp = this;
+      this.$v.$touch();
+        if (!this.$v.$invalid) {
       try {
         // await this.addWork(this.work);
         await this.addWork(this.work).then(res => {
@@ -89,13 +117,21 @@ export default{
           type:"success",
           text: "Работа добавлена"
         })
+        this.$v.$reset();
           }
         });
       }
       catch (error) {
         // error 
       }
+        }
     },
+    status(validation) {
+        return {
+          error: validation.$error,
+          dirty: validation.$dirty
+        }
+      },
     getTags() {
       this.work.tags = this.work.techs.split(',');
     },

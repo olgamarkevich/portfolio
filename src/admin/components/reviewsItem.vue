@@ -35,23 +35,27 @@
           .adm-info_row
             .adm-info_line
               .adm-info_label Имя автора
-              input(placeholder="Ковальчук Дмитрий" v-model="editedReview.author").adm_block_input
+              input(placeholder="Ковальчук Дмитрий" v-model="$v.editedReview.author.$model" :class="status($v.editedReview.author)").adm_block_input
             .adm-info_line
               .adm-info_label Титул автора
-              input(placeholder="Основатель LoftSchool" v-model="editedReview.occ").adm_block_input
+              input(placeholder="Основатель LoftSchool" v-model="$v.editedReview.occ.$model" :class="status($v.editedReview.occ)").adm_block_input
           .adm-info_line
             .adm-info_label Отзыв
-            textarea.adm-textarea(v-model="editedReview.text")
+            textarea.adm-textarea(v-model="$v.editedReview.text.$model" :class="status($v.editedReview.text)")
           .adm-info-btns
             button.btn(v-on:click="editmode = false" type="button") Отмена
             button.btn_s(@click="editRev") Сохранить
 
-        
 </template>
 
 
 <script>
   import { mapActions } from "vuex";
+
+  import Vue from 'vue';
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required} from 'vuelidate/lib/validators';
   export default{
     props: {
     review: Object
@@ -65,6 +69,19 @@
       }
     }
     
+  },
+  validations: {
+    editedReview: {
+      author: {
+        required
+      },
+      occ: {
+        required
+      },
+      text: {
+        required
+      }
+    }
   },
   methods:{
       ...mapActions("reviews", ["removeReviews", "editReview"]),
@@ -82,13 +99,23 @@
       this.editmode = true;
     },
     async editRev() {
+      this.$v.$touch();
+        if (!this.$v.$invalid) {
       try {
         await this.editReview(this.editedReview);
         this.editmode = false;
+         this.$v.$reset();
       } catch (error) {
         
       }
+        }
     },
+    status(validation) {
+        return {
+          error: validation.$error,
+          dirty: validation.$dirty
+        }
+      },
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
       this.editedReview.photo = file;

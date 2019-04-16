@@ -34,18 +34,19 @@
         .adm-info
           .adm-info_line
             .adm-info_label Название
-            input(placeholder="Ковальчук Дмитрий" v-model="editedWork.title").adm_block_input
+            input(placeholder="Ковальчук Дмитрий" v-model="$v.editedWork.title.$model" :class="status($v.editedWork.title)").adm_block_input
           .adm-info_line
             .adm-info_label Ссылка
-            input(placeholder="Основатель LoftSchool" v-model="editedWork.link").adm_block_input
+            input(placeholder="Основатель LoftSchool" v-model="$v.editedWork.link.$model" :class="status($v.editedWork.link)").adm_block_input
           .adm-info_line
             .adm-info_label Описание
-            textarea.adm-textarea(v-model="editedWork.description")
+            textarea.adm-textarea(v-model="$v.editedWork.description.$model" :class="status($v.editedWork.description)")
           .adm-info_line
             .adm-info_label Добавление тэга
             input(
-              v-model="editedWork.techs"
+              v-model="$v.editedWork.techs.$model"
               @keyup="getTags"
+              :class="status($v.editedWork.techs)"
             ).adm_block_input
             .adm-tags
               .adm-tags_item(
@@ -63,6 +64,12 @@
 
 <script>
   import { mapActions } from "vuex";
+
+  import Vue from 'vue';
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required} from 'vuelidate/lib/validators';
+
   export default{
     props: {
     work: Object
@@ -75,7 +82,22 @@
         rendedPhotoUrl: 'https://webdev-api.loftschool.com/' + this.work.photo
       }
     }
-    
+  },
+  validations: {
+    editedWork: {
+      title: {
+        required
+      },
+      link: {
+        required
+      },
+      techs: {
+        required
+      },
+      description: {
+        required
+      }
+    }
   },
   methods:{
         ...mapActions("works", ["removeWork", "editWork"]),
@@ -101,14 +123,24 @@
       },
       async saveWork() {
       var cmp = this;
+      his.$v.$touch();
+        if (!this.$v.$invalid) {
       try {
         await this.editWork(this.editedWork).then(res => {
           if (res.status === 200) {
             cmp.editmode = false;
+            this.$v.$reset();
           }
         });
       } catch (error) {
       }
+        }
+      },
+      status(validation) {
+        return {
+          error: validation.$error,
+          dirty: validation.$dirty
+        }
       },
       appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];

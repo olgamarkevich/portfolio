@@ -20,13 +20,13 @@
           .adm-info_row
             .adm-info_line
               .adm-info_label Имя автора
-              input(placeholder="Ковальчук Дмитрий" v-model="review.author").adm_block_input
+              input(placeholder="Ковальчук Дмитрий" v-model="$v.review.author.$model" :class="status($v.review.author)").adm_block_input
             .adm-info_line
               .adm-info_label Титул автора
-              input(placeholder="Основатель LoftSchool" v-model="review.occ").adm_block_input
+              input(placeholder="Основатель LoftSchool" v-model="$v.review.occ.$model" :class="status($v.review.occ)").adm_block_input
           .adm-info_line
             .adm-info_label Отзыв
-            textarea.adm-textarea(v-model="review.text")
+            textarea.adm-textarea(v-model="$v.review.text.$model" :class="status($v.review.text)")
           .adm-info-btns
             button.btn(v-on:click="$emit('hideAddingForm')" type="button") Отмена
             button.btn_s(@click="addNewReview") Сохранить
@@ -35,6 +35,11 @@
 
 <script>
 import { mapActions } from "vuex";
+
+import Vue from 'vue';
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required} from 'vuelidate/lib/validators';
 
 export default{
 
@@ -48,6 +53,22 @@ export default{
         photo:""
       }
     };
+  },
+  validations: {
+    review: {
+      author: {
+        required
+      },
+      occ: {
+        required
+      },
+      text: {
+        required
+      },
+      photo: {
+        required
+      }
+    }
   },
 
   methods: {
@@ -68,6 +89,8 @@ export default{
     },
     async addNewReview() {
       var cmp = this;
+      this.$v.$touch();
+        if (!this.$v.$invalid) {
       try {
         await this.addReview(this.review).then(res => {
           if (res.status === 201) {
@@ -76,12 +99,20 @@ export default{
             type:"success",
             text: "Отзыв добавлен"
           })
+          this.$v.$reset();
           }
         });
       } catch (error) {
         
       }
+        }
     },
+    status(validation) {
+        return {
+          error: validation.$error,
+          dirty: validation.$dirty
+        }
+      },
     
   }
 }
