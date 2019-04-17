@@ -123,7 +123,7 @@
       },
       async saveWork() {
       var cmp = this;
-      his.$v.$touch();
+      this.$v.$touch();
         if (!this.$v.$invalid) {
       try {
         await this.editWork(this.editedWork).then(res => {

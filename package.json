@@ -61,6 +61,7 @@
     "vue-router": "^3.0.2",
     "vue-scrollto": "^2.15.0",
     "vuelidate": "^0.7.4",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "wdio": "^3.0.3"
   }
 }
