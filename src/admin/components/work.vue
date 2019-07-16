@@ -2,54 +2,54 @@
   .admin-work
     .admin-title_container
       .admin-title Блок «Работы»
-
-    .adm_block.adm-top
-      .adm_block_title
-        .adm_block_title_span Редактирование работы
-      .adm_block_wrapper.edit-work-container
-        .adm-work-load
-          p.load_label Перетащите или загрузите для загрузки изображения
-          button.btn_s Загрузить
-        .adm-info
-          .adm-info_line
-            .adm-info_label Название
-            input(placeholder="Ковальчук Дмитрий").adm_block_input
-          .adm-info_line
-            .adm-info_label Ссылка
-            input(placeholder="Основатель LoftSchool").adm_block_input
-          .adm-info_line
-            .adm-info_label Описание
-            textarea.adm-textarea
-          .adm-info_line
-            .adm-info_label Добавление тэга
-            input().adm_block_input
-            .adm-tags
-              .adm-tags_item HTML
-                button.del-tags
-              .adm-tags_item CSS
-                button.del-tags 
-              .adm-tags_item Javascript
-                button.del-tags 
-          .adm-info-btns
-            button.btn Отмена
-            button.btn_s Сохранить
-
+    workAdd(v-if='showAddingForm' @hideAddingForm="hideAddingForm")
     .adm-row.row3
-      button.adm_block.add_block
+      button.adm_block.add_block(@click="showAddingForm = true" v-if="showAddingForm === false" )
         .add_block_plus +
         .add_block_span Добавить <br>работу
-      workItem
-      workItem
-      workItem
+      workItem(v-for="work in works"
+        :key="work.id"
+        :work="work"
+        )
         
 </template>
 
 <script>
+  import { mapActions, mapState } from "vuex";
   import workItem from './workItem';
+  import workAdd from './workAdd';
 
   export default{
     components:{
-      workItem
+      workItem,
+      workAdd
+    },
+    props:{
+    work: Array
+    },
+    data(){
+      return{
+        showAddingForm: false
+      }
+    },
+    computed: {
+    ...mapState('works', {
+      works: state => state.works
+    })
+    },
+    methods:{
+        hideAddingForm: function() {
+        this.showAddingForm = false;
+      },
+      ...mapActions('works', ['fetchWorks']),
+    },
+    async created() {
+      try {
+        await this.fetchWorks(); 
+      }
+      catch (error) {
+        alert('Произошла ошибка при загрузке работ') 
+      }
     }
   }
 </script>

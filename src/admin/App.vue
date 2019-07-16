@@ -8,34 +8,57 @@
             //- about
             //- reviews
             //- work
+      transition(name="show")
+        .tooltips-container(v-if="showed")
+          tooltip
 </template>
 
 <script>
 
   import Vue from 'vue'
-
+  import Vuelidate from 'vuelidate';
+  Vue.use(Vuelidate);
+  import { required, email } from 'vuelidate/lib/validators'
   import headerAdm from './components/headerAdm';
   import navAdm from './components/navAdm';
-  // import about from './components/about';
-  // import reviews from './components/reviews';
-  // import work from './components/work';
+  import tooltip from './components/tooltip';
+  import { mapActions, mapState } from "vuex";
+
 
   export default{
     name:'app',
     components:{
       headerAdm,
       navAdm,
-      // about,
-      // reviews,
-      // work
+      tooltip
     },
     data(){
       return{}
+    },
+    computed:{
+      ...mapState('tooltips', {
+        showed:state => state.showed
+      })
     }
   }
 </script>
 
 <style lang="pcss">
+.show-enter-active, .show-leave-active{
+transition: transform .5s;
+}
+
+.show-enter, .show-leave-to{
+transform: translateY(-50%, 110%);
+}
+
+.tooltips-container{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -140px;
+  z-index: 100;
+}
 
 .btn{
   font-size: 16px;
@@ -596,6 +619,10 @@ p {
 .adm-textarea{
   font-size: 14px;
 }
+}
+
+.error.dirty {
+  box-shadow: 0 0 0 0.2rem rgba(225,83,97,.5);
 }
 
 </style>

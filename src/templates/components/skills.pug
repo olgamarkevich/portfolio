@@ -1,23 +1,22 @@
 script(type="text/x-template")#skills-list
     .users-skills
-        .skills-line(v-for="skill in skills" :key="skill.skillsGroup")
+        .skills-line(v-for="category in categories" :key="category.id")
             skills-row(
-                :skill="skill"
+                :category="category"
             )
 
 script(type="text/x-template")#skills-row
     .skills-row-wrapper
-        .skills-title {{skill.skillsGroup}}
+        .skills-title {{category.category}}
         .skills-circle
-            .circle__item(v-for="(skillPercent, skillName) in skill.skills")
+            .circle__item(v-for="skill in category.skills" :key="skill.id")
                 skill(
-                    :skillName="skillName"
-                    :skillPercent="skillPercent"
+                    :skill="skill"
                 )
 
 script(type="text/x-template")#skill
-        .circle__item-wr
-            .skill-title {{skillName}}
+        .circle__item-wr(ref="skill")
+            .skill-title {{skill.title}}
             svg.percentagel(viewBox="0 0 156 156" preserveAspectRatio="none")
                 circle.circle.circle_under(cx="78" cy="78" r="68")
                 circle.circle.circle_above(cx="78" cy="78" r="68" ref="color-circle")
