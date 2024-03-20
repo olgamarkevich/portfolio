@@ -42,7 +42,6 @@ html(lang="en")
                                                 ['Навыки', 'skills'],
                                                 ['Работы', 'portfolio'],
                                                 ['Отзывы', 'reviews'],
-                                                ['Связаться', 'feedback'],
                                             ]
                                         each item in menu
                                             li.nav__item
@@ -51,8 +50,6 @@ html(lang="en")
                             ul.socials
                                 - 
                                     var socials = [
-                                        ['insta', 'https://www.instagram.com/olga_pyrko/'], 
-                                        ['vk', 'https://vk.com/olga_pyrko'],
                                         ['github', 'https://github.com/olgamarkevich'],
                                     ]
                                 each item in socials
@@ -76,13 +73,13 @@ html(lang="en")
                         .about__left
                             .user-date
                                 .about-img-wr
-                                    +image('content/user.jpg', 'about-img', alt="user")
+                                    +image('content/user.png', 'about-img', alt="user")
                                     
                                 table.user__data-table
                                     - 
                                         var data = [
                                             ['Проживаю:', 'Минск'],
-                                            ['Возраст:', '25 лет'],
+                                            ['Возраст:', '30 лет'],
                                             ['Родилась:', '9 января 1994 г.'],
                                         ]
                                     each row in data
@@ -93,7 +90,8 @@ html(lang="en")
                             .about__welcome Привет, меня зовут
                             .about__name Ольга Маркевич
                             .about__desc 
-                                p Я занимаюсь разработкой современных сайтов и приложений. <br>Мне нравится делать интересные и современные проекты.
+                                p Я html-верстальщик с 4 годами опыта работы в веб студии (более 50 проектов), имею компетенции в UI/UX и тестировании (закончила профильные курсы и активно применяю полученные знания в работе). Имею опыт разработки проектов на Vue, React+Redux.
+
                             //.about__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!             
                  
                 .triangles
@@ -113,7 +111,7 @@ html(lang="en")
                         .skills-img-container
                         .skills-info
                             .section-title Чем я могу для вас полезной
-                            p.text-w Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                            
                             #skills-component
                             
             
@@ -150,45 +148,10 @@ html(lang="en")
                 section.reviews#reviews
                     #reviews-component
 
-                section.feedback#feedback
-                    .container
-                        .section-title Связаться со мной
-
-                        #fb-component
-                            form.wi-form
-                                .flex-row
-                                    .flex-col
-                                        .wi-line
-                                            label.form-label Введите ваше имя
-                                            .line-wr
-
-                                                input.form-input(v-model="$v.fbName.$model" :class="status($v.fbName)" placeholder="Ковальчук Дмитрий" type="name" name="name")
-                                                +icon('user', 'line-icon')
-                                                span(v-if="$v.fbName.$error").error-msg Заполните поле
-                                    .flex-col
-                                        .wi-line
-                                            label.form-label Введите ваш email
-                                            .line-wr
-                                                
-                                                input.form-input(v-model="$v.fbMail.$model" :class="status($v.fbMail)" placeholder="loftschool@study.com" type="email" name="email")
-                                                +icon('envelope', 'line-icon')
-                                                span(v-if="!$v.fbMail.required && $v.fbMail.$dirty").error-msg Заполните поле
-                                                span(v-if="!$v.fbMail.email && $v.fbMail.$dirty").error-msg Введите корректный email
-                                .wi-line
-                                        .wi-line
-                                                label.form-label Сообщение к письму
-                                                .line-wr
-                                                    
-                                                    textarea.form-textarea(v-model="$v.fbMsg.$model" :class="status($v.fbMsg)" type="text" name="next" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
-                                                    +icon('message', 'line-icon')
-                                                    span(v-if="$v.fbMsg.$error").error-msg Заполните поле
-                                button.wi-btn(:disabled="!formIsValid($v)" @click.prevent="submitFb($v)") Отправить
-                            
-
             footer.footer
                 .container.flex-wr
                     .footer__left
-                        .footer-copi © 2019
+                        .footer-copi © 2024
                         .footer-user 
                             .footer-user-name Ольга<br> Маркевич
                             .footer-user-desk Личный сайт<br> веб-разработчика
@@ -202,7 +165,7 @@ html(lang="en")
                                         ['Навыки', 'skills'],
                                         ['Работы', 'portfolio'],
                                         ['Отзывы', 'reviews'],
-                                        ['Связаться', 'feedback'],
+                            
                                     ]
                                 each item in menu
                                     li.nav__item
@@ -210,14 +173,11 @@ html(lang="en")
 
                         .footer-info-wr
                             .footer-col
-                                article.footer-text 
-                                    .p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-
+                              
                                 ul.socials.socials.socials-border
                                     - 
                                         var socials = [
-                                            ['insta', 'https://www.instagram.com/olga_pyrko/'], 
-                                            ['vk', 'https://vk.com/olga_pyrko'],
+                                            
                                             ['github', 'https://github.com/olgamarkevich'],
                                         ]
                                     each item in socials

@@ -1,71 +1,116 @@
 <template lang="pug">
     .admin-about
-      .admin-title_container
-        .admin-title Блок «Обо мне»
-        button.btn-add_link(@click="showAddingForm = true" v-if="showAddingForm === false" )
-          .btn-add +
-          .btn-add-span Добавить группу
-      
-      .adm-row.content-about
-        skillsAdd(v-if='showAddingForm' @hideAddingForm="hideAddingForm")
-        skills-group(v-for="category in categories"
-        :key="category.id"
-        :category="category"
-        :skills="filterSkillsByCategoryId(category.id)"
-        )
+          .admin-title_container
+            .admin-title Блок «Обо мне»
+            a(href="#").btn-add_link
+              .btn-add +
+              .btn-add-span Добавить группу
+          
+          .adm-row.content-about
+            .adm_block.new_add_skills
+              .adm_block_title
+                input(placeholder="Название новой группы").adm_block_input
+                .adm_block_title_btns
+                  button.btn-tick
+                  button.btn-close
+            
+              .adm_add_skill
+                input(placeholder="Новый навык").adm_block_input.input_new_slills
+                .persent-skills
+                  input(value="100").adm_block_input
+                  span.input_percent %
+                button.btn-add +
 
+            .adm_block
+              .adm_block_title
+                input(value="Workflow").adm_block_input
+                .adm_block_title_btns
+                  button.btn-tick
+                  button.btn-close
+              ul.adm_skills_list
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+              .adm_add_skill
+                input(placeholder="Новый навык").adm_block_input.input_new_slills
+                .persent-skills
+                  input(value="100").adm_block_input
+                  span.input_percent %
+                button.btn-add +
+            .adm_block
+              .adm_block_title
+                input(value="Frontend").adm_block_input
+                .adm_block_title_btns
+                  button.btn-edit
+              ul.adm_skills_list
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-tick
+                    button.btn-close
+                li.adm_skills_item
+                  input(value="Git").adm_block_input
+                  .persent-skills
+                    input(value="100").adm_block_input
+                    span.input_percent %
+                  .adm_block_title_btns
+                    button.btn-edit
+                    button.btn-del
+              .adm_add_skill
+                input(placeholder="Новый навык").adm_block_input.input_new_slills
+                .persent-skills
+                  input(value="100").adm_block_input
+                  span.input_percent %
+                button.btn-add +
 </template>
-
-
-
-<script>
-
-  import { mapActions, mapState } from "vuex";
-  import skillsAdd from './skills-add';
-  import skillsGroup from './skills-group';
-
-  export default{
-    components:{
-      skillsAdd,
-      skillsGroup
-    },
-    data(){
-      return{
-        showAddingForm: false
-      }
-    },
-    computed: {
-    ...mapState('categories', {
-      categories: state => state.categories
-    }),
-    ...mapState('skills', {
-      skills: state => state.skills
-    })
-    },
-    methods: {
-      ...mapActions('categories', ['fetchCategories']),
-      ...mapActions('skills', ['fetchSkills']),
-      filterSkillsByCategoryId(categoryId) {
-      return this.skills.filter(skill => skill.category === categoryId);
-    },
-      hideAddingForm: function() {
-        this.showAddingForm = false;
-      }
-    },
-    async created() {
-    try {
-      await this.fetchCategories(); 
-    } catch (error) {
-      alert('Произошла ошибка при загрузке категорий') 
-    }
-    try {
-      await this.fetchSkills(); 
-    } catch (error) {
-      alert('Произошла ошибка при загрузке скиллов') 
-    }
-  }
-  }
-</script>
 
 <style lang="pcss">
 .content-about {
@@ -133,9 +178,4 @@
     margin-right: 15px;
   }
 }
-
-@media (max-width: 640px){
-
-}
-
 </style>

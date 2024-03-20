@@ -1,22 +1,23 @@
+
 script(type="text/x-template")#reviews__list
     .container
         .flex-reviews
             .section-title Что обо мне говорят
             .reviews__slider-controls
-                button.prev-btn(@click="previous")
-                button.next-btn(@click="next")
+                .prev-btn(@click="previous")
+                .next-btn(@click="next")
         Flickity(
             :options="flickityOptions"
             ref="flickity"
-            v-if="typeof(reviews) !== 'undefined' && reviews.length > 0"
         ).reviews__slider
-            .carousel-cell(v-for="review in reviews" :key="review.id") 
+            .carousel-cell(v-for="review in reviews") 
                 .reviews__item
                     .reviews__text
                         p {{review.text}}
                     .reviews-name-wr
                         .reviews__avatar
-                            img(:src="`https://webdev-api.loftschool.com/${review.photo}`" alt="reviews-person").avatar-img
+                            img(src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt="reviews-person").avatar-img
+                        
                         .reviews__person
-                            .reviews__name {{review.author}}
-                            .reviews__position {{review.occ}}
+                            .reviews__name {{review.name}}
+                            .reviews__position {{review.position}}

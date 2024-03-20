@@ -8,57 +8,33 @@
             //- about
             //- reviews
             //- work
-      transition(name="show")
-        .tooltips-container(v-if="showed")
-          tooltip
 </template>
 
 <script>
+import Vue from 'vue';
 
-  import Vue from 'vue'
-  import Vuelidate from 'vuelidate';
-  Vue.use(Vuelidate);
-  import { required, email } from 'vuelidate/lib/validators'
-  import headerAdm from './components/headerAdm';
-  import navAdm from './components/navAdm';
-  import tooltip from './components/tooltip';
-  import { mapActions, mapState } from "vuex";
+import headerAdm from './components/headerAdm';
+import navAdm from './components/navAdm';
+// import about from './components/about';
+// import reviews from './components/reviews';
+// import work from './components/work';
 
-
-  export default{
-    name:'app',
-    components:{
-      headerAdm,
-      navAdm,
-      tooltip
-    },
-    data(){
-      return{}
-    },
-    computed:{
-      ...mapState('tooltips', {
-        showed:state => state.showed
-      })
-    }
-  }
+export default {
+  name: 'app',
+  components: {
+    headerAdm,
+    navAdm,
+    // about,
+    // reviews,
+    // work
+  },
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="pcss">
-.show-enter-active, .show-leave-active{
-transition: transform .5s;
-}
-
-.show-enter, .show-leave-to{
-transform: translateY(-50%, 110%);
-}
-
-.tooltips-container{
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  margin-left: -140px;
-  z-index: 100;
-}
 
 .btn{
   font-size: 16px;
@@ -200,7 +176,7 @@ transform: translateY(-50%, 110%);
 .adm_block_text{
   font-size: 16px;
   font-weight: 600;
-  
+
   line-height: 1.875;
   height: 182px;
   overflow: hidden;
@@ -229,7 +205,7 @@ transform: translateY(-50%, 110%);
   opacity: 1;
     transition: all 0.3s;
     }
-   
+
   }
 }
 }
@@ -316,7 +292,7 @@ transform: translateY(-50%, 110%);
 .adm-row{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows:1fr;
+  grid-template-rows:1fr 1fr;
   grid-gap:30px;
   &.row3{
     grid-template-columns: 1fr 1fr 1fr;
@@ -326,7 +302,7 @@ transform: translateY(-50%, 110%);
 .adm_block{
   background: #fff;
   padding: 20px 25px;
-  box-shadow: 4px 3px 20px 0px rgba(0, 0, 0, 0.07); 
+  box-shadow: 4px 3px 20px 0px rgba(0, 0, 0, 0.07);
   position: relative;
 }
 
@@ -338,16 +314,11 @@ transform: translateY(-50%, 110%);
   display: flex;
   text-decoration: none;
   align-items: center;
-  background: none;
-   outline: none;
   .btn-add-span{
     color:#383bcf;
     font-weight: 600;
     font-size:16px;
     margin-left:12px;
-  }
-  :focus{
-    outline: none
   }
 }
 
@@ -487,6 +458,9 @@ p {
     .adm-row.row3 {
     grid-template-columns: 1fr 1fr;
 }
+.new_add_skills{
+  display: none;
+}
 
 .wrapper_w70{
   width: 100%;
@@ -620,9 +594,4 @@ p {
   font-size: 14px;
 }
 }
-
-.error.dirty {
-  box-shadow: 0 0 0 0.2rem rgba(225,83,97,.5);
-}
-
 </style>

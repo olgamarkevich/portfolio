@@ -1,3 +1,4 @@
+
 script(type="text/x-template")#slider-container
     .portfolio-container
         display(
@@ -6,17 +7,15 @@ script(type="text/x-template")#slider-container
         :currentIndex="currentIndex"
         @slide="handleSlide"
         @slideTo="handleSlideTo"
-        v-if="currentWork"
         )
         info(
         :currentWork="currentWork"
-        v-if="currentWork"
         )
 
 script(type="text/x-template")#slider-display
     .portfolio-slider(:data-slide="currentIndex + 1" ref="display")
         .portfolio-date_number {{currentIndex+1}}
-        img(:src="`https://webdev-api.loftschool.com/${currentWork.photo}`").one-img-work
+        img(:src="currentWork.photo")
         btns(
           @slide="direction => $emit('slide', direction)"
         )
@@ -26,6 +25,7 @@ script(type="text/x-template")#slider-display
           @slideTo="index => $emit('slideTo', index)"
         )
         
+
 script(type="text/x-template")#slider-btns
     .portfolio-dots
         a(href="#" @click.prevent="$emit('slide', 'prev')").btn-up
@@ -39,7 +39,7 @@ script(type="text/x-template")#slider-thumbs
             @click="$emit('slideTo', index)"
             ref="thumb"
         )
-            img(:src="`https://webdev-api.loftschool.com/${work.photo}`" alt="")
+            img(:src="work.photo" alt="")
 
 script(type="text/x-template")#slider-info
     .portfolio-date
@@ -47,7 +47,7 @@ script(type="text/x-template")#slider-info
         :tagsArray="tagsArray"
         )
         .portfolio-name {{currentWork.title}}
-        .portfolio-description {{currentWork.description}}
+        .portfolio-description {{currentWork.desc}}
         a(:href="currentWork.link" target="_blank").portfolio-link Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
